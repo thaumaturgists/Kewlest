@@ -6,17 +6,20 @@
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- This helps protect against certain types of attacks -->
-    <meta name="referrer" content="strict-origin-when-cross-origin"> <!-- This controls how much information is shared with other sites -->
-    <meta http-equiv="Permissions-Policy" content="..."> <!-- This sets rules about what the site can do, like using the camera or microphone -->
+    <meta name="referrer" content="no-referrer"> <!-- This controls how much information is shared with other sites, no-referrer(no info), strict-origin-when-cross-origin(only sends the origin)  -->
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), fullscreen=(), payment=(), notifications=(), push=(), midi=(), sync-xhr=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard=(), document-domain=(), web-share=(), screen-orientation=(), xr-spatial-tracking=()">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!-- This helps keep the site secure by forcing it to use HTTPS -->
-    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer -->
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer, set on the server side and this does not mean it is set from here -->
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="..."> <!-- This is a set of rules that helps protect the site from harmful content -->
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self'; font-src 'self'; connect-src 'self' https://api.soundcloud.com/; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content -->
     <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
     default-src 'self';
     script-src 'self' 'nonce-<RANDOM_NONCE>';
     style-src 'self' 'nonce-<RANDOM_NONCE>';
+    report-uri /csp-violation-report-endpoint;
+
+    Content-Security-Policy: frame-ancestors 'self' https://w.soundcloud.com https://soundcloud.com; // Set on server side
     -->
 
     <!-- SEO Optimization -->
