@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- This tells the browser to read the text in a special way (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This makes sure the page looks good on all devices -->
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- This helps protect against certain types of attacks -->
+    <meta name="referrer" content="strict-origin-when-cross-origin"> <!-- This controls how much information is shared with other sites -->
+    <meta http-equiv="Permissions-Policy" content="..."> <!-- This sets rules about what the site can do, like using the camera or microphone -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!-- This helps keep the site secure by forcing it to use HTTPS -->
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer -->
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="..."> <!-- This is a set of rules that helps protect the site from harmful content -->
+    <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
+    default-src 'self';
+    script-src 'self' 'nonce-<RANDOM_NONCE>';
+    style-src 'self' 'nonce-<RANDOM_NONCE>';
+    -->
+
+    <!-- SEO Optimization -->
+    <meta name="description" content="Music Mixer - A simple yet powerful music randomizer. Play indie hits or trending tunes with ease."> <!-- This describes what the site is about for search engines -->
+    <meta name="keywords" content="Music Mixer, Play Random Music, SoundCloud, Indie Music, Trending Songs"> <!-- These are important words related to the site -->
+    <meta name="author" content="Kewlest"> <!-- This tells who made the site -->
+
+    <title>Music Mixer</title> <!-- This is the title of the page that shows up in the browser tab -->
+
+    <style>
+        /* This is where we put all the styles to make our site look pretty */
+        #musicMixer {
+            position: fixed; /* This keeps the music mixer in a fixed spot on the screen */
+            bottom: 0; /* It stays at the bottom of the screen */
+            right: 20px; /* It stays 20 pixels from the right edge */
+            width: 250px; /* The width of the music mixer */
+            max-width: 90%; /* It can be a maximum of 90% of the screen width */
+            background-color: rgba(255, 255, 255, 0.9); /* A light background color with some transparency */
+            border: 1px solid rgba(204, 204, 204, 0.5); /* A light border around the mixer */
+            border-radius: 12px; /* Rounded corners for the mixer */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* A shadow effect to make it look like it’s floating */
+            z-index: 1000; /* This makes sure it stays on top of other things on the page */
+            transition: all 0.7s ease; /* Smooth transition for changes */
+            overflow: hidden; /* Hides anything that goes outside the box */
+            opacity: 0.9; /* Slightly transparent */
+            backdrop-filter: blur(10px); /* Blurs the background behind the mixer */
+            display: flex; /* This makes it a flexible box to arrange items inside */
+            flex-direction: column; /* Items inside will be arranged in a column */
+        }
+
+        #musicMixer:hover {
+            opacity: 1; /* When you hover over it, it becomes fully visible */
+            box-shadow: 0 0 20px rgba(255, 85, 0, 0.8); /* Changes the shadow color when hovered */
+        }
+
+        #buttonContainer {
+            display: flex; /* This makes the button container a flexible box */
+            justify-content: space-between; /* Aligns buttons to the left and right */
+            align-items: center; /* Makes sure buttons are at the same height */
+            padding: 10px; /* Adds space inside the button container */
+        }
+
+        #playButton {
+            flex-grow: 1; /* This button takes up available space */
+            padding: 10px; /* Adds space inside the button */
+            /* This is the background color of the play button with some transparency */
+            border: none; /* No border around the button */
+            color: white; /* The text color of the button is white */
+            cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+            border-radius: 5px; /* Rounds the corners of the button */
+            transition: background 0.3s ease; /* Smooth transition for background color changes */
+            font-size: 16px; /* The size of the text on the button */
+        }
+
+        #playButton:hover {
+            background-color: rgba(255, 85, 0, 1); /* Changes the background color when you hover over the button */
+        }
+
+        #toggleButton {
+            padding: 5px 10px; /* Adds space inside the toggle button */
+            background: transparent; /* The background is transparent */
+            border: none; /* No border around the button */
+            color: #ff5500; /* The text color of the toggle button */
+            cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+            font-size: 20px; /* The size of the text on the toggle button */
+            transition: transform 0.2s ease, background 0.3s ease; /* Smooth transition for changes */
+        }
+
+        #toggleButton:hover {
+            transform: scale(1.1); /* Makes the button slightly bigger when you hover over it */
+            color: gold; /* Changes the text color to gold when hovered */
+        }
+
+        #musicContainer {
+            margin-top: 5px; /* Adds space above the music container */
+        }
+
+        #musicMixer.minimized #musicContainer {
+            display: none; /* Hides the music content when the mixer is minimized */
+        }
+
+        #musicMixer.minimized {
+            opacity: 0.2; /* Makes the mixer transparent when minimized */
+            backdrop-filter: blur(5px); /* Blurs the background when minimized */
+        }
+
+        #footer {
+            background-color: rgba(255, 85, 0, 0.9); /* Background color for the footer */
+            color: #ff17b4; /* Text color for the footer */
+            padding: 5px 0; /* Adds space inside the footer */
+            text-align: center; /* Centers the text in the footer */
+            font-family: Cursive; /* Changes the font style to cursive */
+            font-weight: bold; /* Makes the text bold */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 85, 0, 1); /* Adds a glowing effect to the text */
+            margin: 0; /* Removes any margin around the footer */
+        }
+
+        body {
+            background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* A pretty background that fades from one color to another */
+            font-family: 'Cursive', sans-serif; /* Changes the font style for the whole page */
+            color: #fff; /* Sets the text color to white */
+            margin: 0; /* Removes any margin around the body */
+            padding: 20px; /* Adds space inside the body */
+            height: 100vh; /* Makes the body take up the full height of the screen */
+            display: flex; /* Makes the body a flexible box */
+            justify-content: center; /* Centers the content horizontally */
+            align-items: flex-start; /* Aligns items to the start to avoid cutting off */
+            overflow: auto; /* Ensures overflow is handled */
+        }
+
+        #content {
+            text-align: center; /* Centers the text in the content box */
+            background: rgba(255, 255, 255, 0.1); /* A light background with some transparency */
+            padding: 20px; /* Adds space inside the content box */
+            border-radius: 15px; /* Rounds the corners of the content box */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); /* Adds a glowing effect around the content box */
+            backdrop-filter: blur(10px); /* Blurs the background behind the content box */
+            animation: pulse 4s infinite; /* Makes the content box pulse with a gentle animation */
+            max-width: 800px; /* Sets a maximum width for the content box */
+            margin: 20px auto; /* Centers the content box and adds margin to the top */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1); /* Starts at normal size */
+            }
+            50% {
+                transform: scale(1.02); /* Grows slightly bigger in the middle of the animation */
+            }
+            100% {
+                transform: scale(1); /* Returns to normal size at the end */
+            }
+        }
+
+        h1, h2 {
+            color: #ff17b4; /* Sets the color of the main titles (h1 and h2) to a bright pink */
+            text-shadow: 0 0 20px rgba(255, 23, 188, 0.8), 0 0 30px rgba(255, 23, 188, 0.6); /* Adds a glowing effect to the titles */
+        }
+
+        h2 {
+            color: #ff5500; /* Sets the color of the subheadings (h2) to a bright orange */
+            text-shadow: 0 0 15px rgba(255, 85, 0, 0.8), 0 0 25px rgba(255, 85, 0, 0.6); /* Adds a glowing effect to the subheadings */
+        }
+
+        p, li {
+            font-size: 18px; /* Sets the size of the text in paragraphs and list items */
+            line-height: 1.6; /* Makes the lines of text a bit taller for easier reading */
+            color: #fff; /* Sets the text color to white */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3); /* Adds a soft glow effect to the text */
+        }
+
+        .highlight {
+            color: red; /* Changes the highlighted text color to red */
+            font-weight: bold; /* Makes the highlighted text bold */
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); /* Adds a red glow effect to the highlighted text */
+        }
+
+        ul {
+            list-style-type: none; /* Removes the bullet points from the list */
+            padding: 0; /* Removes any padding around the list */
+        }
+
+        li {
+            margin: 10px 0; /* Adds some space between each list item */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3); /* Adds a soft glow effect to the list items */
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br><br> <!-- These are just empty spaces to push the content down a bit -->
+    <main>
+        <div id="content" style="text-align: center; color: #fff; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);">
+            <!-- This is a special box where we put all the main content -->
+            <h1 style="font-family: 'Cursive', sans-serif; color: #ff17b4;">✨ Welcome to the Enchanted Music Mixer ✨</h1>
+            <!-- This is the big title of our music mixer -->
+
+            <p style="font-size: 18px; line-height: 1.6;">
+                <!-- This is a paragraph that tells you about the music mixer -->
+                Step into a realm of melodious wonders with the Music Mixer, a magical portal that brings forth the sweetest sounds of indie hits and trending tunes. With a mere click, let the enchanting melodies whisk you away on a journey of musical discovery, where every note dances like a gentle breeze through a sunlit meadow.
+            </p>
+            
+            <h2 style="color: #ff5500;">🌟 Features of the Music Mixer 🌟</h2>
+            <!-- This is a subheading that introduces the features of the music mixer -->
+            <ul style="list-style-type: none; padding: 0;">
+                <!-- This is a list of features -->
+                <li><strong>🎶 Random Music Playback:</strong> Embrace the thrill of surprise as you press the "Play Random Music" button, unveiling a delightful selection of playlists that will serenade your soul.</li>
+                <li><strong>🌈 Minimalist Design:</strong> The Music Mixer appears as a charming little widget, gracefully nestled in the corner of your screen, allowing you to bask in the beauty of music without distractions.</li>
+                <li><strong>✨ Toggle Functionality:</strong> With a gentle click, you can minimize or expand the Music Mixer, keeping the magic close at hand while you focus on your daily adventures.</li>
+                <li><strong>🌌 Responsive Layout:</strong> Whether you’re on a grand desktop or a whimsical mobile device, the Music Mixer adapts to your needs, ensuring that the music flows wherever you go.</li>
+            </ul>
+
+            <h2 style="color: #ff5500;">🌙 How It Works 🌙</h2>
+            <!-- This is another subheading that explains how the music mixer works -->
+            <p style="font-size: 18px; line-height: 1.6;">
+                The Music Mixer harnesses the power of the SoundCloud API, conjuring playlists and streaming enchanting melodies directly within the application. With a simple click of the "Play Random Music" button, a random playlist is summoned, and an ethereal player appears, inviting you to lose yourself in the music.
+            </p>
+            
+            <h2 style="color: #ff5500;">🕊️ Security and Privacy 🕊️</h2>
+            <!-- This subheading talks about how your information is safe -->
+            <p style="font-size: 18px; line-height: 1.6;">
+                Your safety is our priority. The Music Mixer is woven with protective spells, implementing various security measures to guard your data and ensure a serene browsing experience. Rest assured, this magical realm does not track your footsteps or collect personal secrets, allowing you to revel in the music freely.
+            </p>
+
+            <h2 style="color: #ff5500;">🌸 About the Developer 🌸</h2>
+            <!-- This section tells you about the person who made the music mixer -->
+            <p style="font-size: 18px; line-height: 1.6;">
+                Crafted by Kewlest, a devoted music sorcerer, the Music Mixer is a labor of love aimed at creating a delightful and enchanting experience for all music lovers. Join us in this magical journey of sound and rhythm!
+            </p>
+
+            <h2 style="color: #ff5500;">🌼 Get Started 🌼</h2>
+            <!-- This section tells you how to start using the music mixer -->
+            <p style="font-size: 18px; line-height: 1.6;">
+                To embark on your musical adventure, simply click the "Play Random Music" button and let the enchanting tunes fill your heart! Feel free to minimize the widget, keeping the magic close while you explore the wonders of your day.
+            </p>
+        </div>
+        <script>
+            // This script runs when the page is fully loaded
+            document.addEventListener("DOMContentLoaded", () => {
+                // We create a list of things we want to change (like titles and paragraphs)
+                const selectors = [
+                    "#content h1", // This selects the big title
+                    "#content h2", // This selects all the subheadings
+                    "#content p",  // This selects all the paragraphs
+                ]; // We can add more things to change here
+
+                // This function makes the text look special by highlighting parts of it
+                const applyBionicText = (element) => {
+                    const words = element.innerText.split(" "); // We split the text into words
+                    
+                    // We change each word to have a highlighted part
+                    const bionicText = words.map(word => {
+                        const splitIndex = Math.ceil(word.length / 2); // We find the middle of the word
+                        const highlightedPart = word.slice(0, splitIndex); // This is the part we will highlight
+                        const remainingPart = word.slice(splitIndex); // This is the rest of the word
+                        return `<span class="highlight">${highlightedPart}</span>${remainingPart}`; // We put the highlighted part in a special span
+                    }).join(" "); // We put all the words back together with spaces
+                    
+                    element.innerHTML = bionicText; // We change the element's text to the new bionic text
+                };
+
+                // We go through each thing we want to change and apply the special text effect
+                selectors.forEach(selector => {
+                    const elements = document.querySelectorAll(selector); // We find all the elements that match the selector
+                    elements.forEach(element => {
+                        applyBionicText(element); // We apply the special text effect to each element
+                    });
+                });
+            });
+        </script>
+
+        <footer style="text-align: center; color: #fff; background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); margin-top: 20px;">
+            <!-- This is the footer at the bottom of the page -->
+            <p style="font-size: 16px; line-height: 1.4;">&copy; 2025 Kewlest. All rights reserved. | <a href="#" style="color: #ff17b4; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #ff17b4; text-decoration: none;">Contact Us</a></p>
+            <!-- This shows the copyright information and links to the privacy policy and contact page -->
+            <p style="font-size: 14px; line-height: 1.4;">Follow us on <a href="#" style="color: #ff17b4; text-decoration: none;">Instagram</a>, <a href="#" style="color: #ff17b4; text-decoration: none;">Twitter</a>, and <a href="#" style="color: #ff17b4; text-decoration: none;">Facebook</a> for the latest updates and magical music moments!</p>
+            <!-- This encourages people to follow on social media for updates -->
+        </footer>
+    </main>
+    <br><br><br><br><br> <!-- More empty spaces to push the music mixer down -->
+
+    <div id="musicMixer">
+        <!-- This is the box for the music mixer -->
+        <div id="buttonContainer">
+            <!-- This is where we put the buttons for playing music -->
+            <button id="playButton">
+                <!-- This button plays random music -->
+                <img src="./feather.png" alt="Kewlest" style="max-width: 15px; height: 15px; margin-right: 5px;">Play Random Music
+            </button>
+            <button id="toggleButton">-</button>
+            <!-- This button minimizes or expands the music mixer -->
+        </div>
+        <div id="musicContainer"></div>
+        <!-- This is where the music will play -->
+        <h6 id="footer">&#x00A9; Kewlest</h6>
+        <!-- This shows the copyright information for the music mixer -->
+    </div>
+    <script>
+        const musicList = [ // This is where we will put the list of songs
+            // Each song has a source (where to find it) and a title (what it's called)
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true", // This is the link to the first playlist that will play automatically
+                title: "Trending Music - Indie" // This is the name of the first playlist
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true", // This is the link to the second playlist that will play automatically
+                title: "Trending Music - Pop" // This is the name of the second playlist
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true", // This is the link to the third playlist that will play automatically
+                title: "Trending Music - R&B" // This is the name of the third playlist
+            },
+            // You can add more playlists here by following the same format
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880479&auto_play=true",
+                title: "Trending Music - Techno"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880714&auto_play=true",
+                title: "Trending Music - Electronic"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841554947&auto_play=true",
+                title: "Buzzing Rock"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555094&auto_play=true",
+                title: "Buzzing Metal"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168467&auto_play=true",
+                title: "Buzzing Hip Hop & Rap"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true",
+                title: "Tomorrow's Hits Today: Fizz"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880509&auto_play=true",
+                title: "Rock, Metal, Punk"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880701&auto_play=true",
+                title: "Folk"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880755&auto_play=true",
+                title: "All genres"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880503&auto_play=true",
+                title: "Soul"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880683&auto_play=true",
+                title: "Hip Hop & Rap"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880620&auto_play=true",
+                title: "Jazz"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880737&auto_play=true",
+                title: "Country"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880668&auto_play=true",
+                title: "House"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880530&auto_play=true",
+                title: "Latin"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880551&auto_play=true",
+                title: "Reggae"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555370&auto_play=true",
+                title: "Buzzing Indie"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168443&auto_play=true",
+                title: "Buzzing R&B"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168458&auto_play=true",
+                title: "Buzzing Pop"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1988906940&auto_play=true",
+                title: "Buzzing Mexico"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168491&auto_play=true",
+                title: "Buzzing Electronic"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1661765643&auto_play=true",
+                title: "Ascending: Rising Global Artists"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1715458305&auto_play=true",
+                title: "Tracks Of The Week"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1755110142&auto_play=true",
+                title: "New & Exclusive"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795508844&auto_play=true",
+                title: "First Listen"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795755891&auto_play=true",
+                title: "Album Of The Week"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/735289128&auto_play=true",
+                title: "New Rock Now: The Dive"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true",
+                title: "Tomorrow's Hits Today: Fizz"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728776461&auto_play=true",
+                title: "Indie New Arrivals: Stitches"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/734469195&auto_play=true",
+                title: "Emerging Indie: Dreams"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728553000&auto_play=true",
+                title: "Fresh Pop Picks: Ear Candy"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1109034904&auto_play=true",
+                title: "Fresh Latin Music: Fresco"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/454981347&auto_play=true",
+                title: "Fresh Pressed Friday"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728525595&auto_play=true",
+                title: "Best New R&B: Vibes"
+            },
+            {
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/787457085&auto_play=true",
+                title: "Essential New Music: NEW + NOW"
+            }
+        ];
+
+        // This is a box where we keep track of the music we're playing. Right now, it's empty.
+        let currentMusic = null;
+
+        // This tells us if the music player is small or big. We start with it being big.
+        let isMinimized = false;
+
+        // This function helps us pick a random number between two numbers we give it.
+        const getRandomNumber = (min, max) => {
+            const array = new Uint32Array(1); // We create a special array to hold our random number.
+            window.crypto.getRandomValues(array); // We use magic to fill the array with a random number.
+            return (array[0] % (max - min + 1)) + min; // We make sure the number is between min and max.
+        };
+
+        // This function plays a random song from our list.
+        const playRandomMusic = () => {
+            try {
+                // We pick a random song from our music list.
+                const randomIndex = getRandomNumber(0, musicList.length - 1);
+                const selectedMusic = musicList[randomIndex]; // This is the song we picked.
+                const musicSrc = selectedMusic.src; // This is the link to the song.
+
+                // We pick a random number between 1 and 4 to start the song at a random point.
+                const randomNumber = getRandomNumber(1, 4);
+
+                // We add the random number to the song's link so it starts at a different place.
+                const modifiedSrc = `${musicSrc}&start_track=${randomNumber}`;
+
+                // We save the modified song link in our currentMusic box.
+                currentMusic = modifiedSrc;
+
+                // We create a special window (iframe) to play the music.
+                const iframe = document.createElement('iframe');
+                iframe.width = "100%"; // We make the window wide.
+                iframe.height = "150"; // We make the window tall.
+                iframe.scrolling = "no"; // We don't want to scroll in this window.
+                iframe.frameBorder = "no"; // We don't want a border around the window.
+                iframe.allow = "autoplay"; // We let the music play automatically.
+                iframe.src = currentMusic; // We set the source of the music in the window.
+
+                // We find the box on the screen where we want to show the music.
+                const musicContainer = document.getElementById('musicContainer');
+                musicContainer.innerHTML = ''; // We clear out anything that was there before.
+
+                // We put the new music window inside the music box.
+                musicContainer.appendChild(iframe);
+            } catch (error) {
+                // If something goes wrong, we show an error message.
+                console.error('Error playing music:', error);
+                alert('An error occurred while trying to play music. Please try again later.');
+            }
+        };
+
+        // This function makes the music player smaller or bigger when we click a button.
+        const toggleMinimize = () => {
+            const musicMixer = document.getElementById('musicMixer'); // We find the music player.
+            isMinimized = !isMinimized; // We change it to the opposite of what it is now.
+
+            // If the player is minimized, we add a class to make it small and change the button text to '+'.
+            if (isMinimized) {
+                musicMixer.classList.add('minimized');
+                document.getElementById('toggleButton').textContent = '+';
+            } else {
+                // If it's not minimized, we remove the class to make it big again and change the button text to '-'.
+                musicMixer.classList.remove('minimized');
+                document.getElementById('toggleButton').textContent = '-';
+            }
+        };
+
+        // We make sure the buttons are ready before we add actions to them.
+        const playButton = document.getElementById('playButton'); // This is the button to play music.
+        const toggleButton = document.getElementById('toggleButton'); // This is the button to minimize or maximize.
+
+        if (playButton) {
+            // When we click the play button, we want to play random music.
+            playButton.addEventListener('click', playRandomMusic);
+        } else {
+            console.error('Play button not found'); // If we can't find the play button, we show an error.
+        }
+
+        if (toggleButton) {
+            // When we click the toggle button, we want to minimize or maximize the player.
+            toggleButton.addEventListener('click', toggleMinimize);
+        } else {
+            console.error('Toggle button not found'); // If we can't find the toggle button, we show an error.
+        }
+    </script>
+</body>
+</html>
