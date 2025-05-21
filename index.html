@@ -62,17 +62,29 @@
         #playButton {
             flex-grow: 1; /* This button takes up available space */
             padding: 10px; /* Adds space inside the button */
-            /* This is the background color of the play button with some transparency */
             border: none; /* No border around the button */
-            color: white; /* The text color of the button is white */
+            color: rgb(245, 0, 18); /* The text color of the button is red */
             cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
             border-radius: 5px; /* Rounds the corners of the button */
             transition: background 0.3s ease; /* Smooth transition for background color changes */
-            font-size: 16px; /* The size of the text on the button */
+            font-size: 15px; /* The size of the text on the button */
+            
+            /* Adding text shadow for shadowing effect */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Horizontal, vertical, blur radius, color */
+            
+            /* Adding box shadow for glow effect */
+            box-shadow: 0 0 10px rgba(245, 0, 18, 0.7); /* Horizontal, vertical, blur radius, color */
         }
 
         #playButton:hover {
             background-color: rgba(255, 85, 0, 1); /* Changes the background color when you hover over the button */
+            color: white; /* Changes the text color to white on hover */
+            
+            /* Adding text shadow for glow effect on hover */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Horizontal, vertical, blur radius, color */
+            
+            /* Optional: You can also add a box shadow for a more pronounced glow effect */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Horizontal, vertical, blur radius, color */
         }
 
         #toggleButton {
