@@ -115,7 +115,7 @@
             backdrop-filter: blur(5px); /* Blurs the background when minimized */
         }
 
-        #footer {
+        #music-footer {
             background-color: rgba(255, 85, 0, 0.9); /* Background color for the footer */
             color: #ff17b4; /* Text color for the footer */
             padding: 5px 0; /* Adds space inside the footer */
@@ -187,13 +187,54 @@
         }
 
         ul {
-            list-style-type: none; /* Removes the bullet points from the list */
-            padding: 0; /* Removes any padding around the list */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-width: 100%; /* Use full width of the music mixer */
+            background-color: rgba(255, 255, 255, 0.1); /* Match the content box background */
+            border-radius: 12px; /* Match the rounded corners of the music mixer */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Match the shadow effect */
+            overflow: hidden;
         }
-
+    
         li {
-            margin: 10px 0; /* Adds some space between each list item */
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3); /* Adds a soft glow effect to the list items */
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border to match the theme */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+        }
+    
+        li:last-child {
+            border-bottom: none; /* Remove border from the last item */
+        }
+    
+        li:hover {
+            background-color: rgba(255, 85, 0, 0.2); /* Subtle highlight on hover */
+            color: #ff17b4; /* Change text color on hover to match the theme */
+        }
+    
+        strong {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #ff5500; /* Accent color for the strong text to match the theme */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3); /* Soft glow effect */
+        }
+    
+        /* Ensure the footer uses the same font as the body */
+        footer {
+            font-family: 'Cursive', sans-serif; 
+        }
+    
+        footer p {
+            margin: 10px 0; /* Adds vertical spacing between paragraphs */
+        }
+    
+        footer a {
+            transition: color 0.3s ease; /* Smooth transition for link color changes */
+        }
+    
+        footer a:hover {
+            color: #ff85c0; /* Change link color on hover for better visibility */
         }
     </style>
 </head>
@@ -214,10 +255,10 @@
             <!-- This is a subheading that introduces the features of the music mixer -->
             <ul style="list-style-type: none; padding: 0;">
                 <!-- This is a list of features -->
-                <li><strong>🎶 Random Music Playback:</strong> Embrace the thrill of surprise as you press the "Play Random Music" button, unveiling a delightful selection of playlists that will serenade your soul.</li>
-                <li><strong>🌈 Minimalist Design:</strong> The Music Mixer appears as a charming little widget, gracefully nestled in the corner of your screen, allowing you to bask in the beauty of music without distractions.</li>
-                <li><strong>✨ Toggle Functionality:</strong> With a gentle click, you can minimize or expand the Music Mixer, keeping the magic close at hand while you focus on your daily adventures.</li>
-                <li><strong>🌌 Responsive Layout:</strong> Whether you’re on a grand desktop or a whimsical mobile device, the Music Mixer adapts to your needs, ensuring that the music flows wherever you go.</li>
+                <li><strong>🎶 Random Music Playback:</strong><br>Embrace the thrill of surprise as you press the "Play Random Music" button, unveiling a delightful selection of playlists that will serenade your soul.</li>
+                <li><strong>🌈 Minimalist Design:</strong><br>The Music Mixer appears as a charming little widget, gracefully nestled in the corner of your screen, allowing you to bask in the beauty of music without distractions.</li>
+                <li><strong>✨ Toggle Functionality:</strong><br>With a gentle click, you can minimize or expand the Music Mixer, keeping the magic close at hand while you focus on your daily adventures.</li>
+                <li><strong>🌌 Responsive Layout:</strong><br>Whether you&#39;re on a grand desktop or a whimsical mobile device, the Music Mixer adapts to your needs, ensuring that the music flows wherever you go.</li>
             </ul>
 
             <h2 style="color: #ff5500;">🌙 How It Works 🌙</h2>
@@ -279,13 +320,17 @@
             });
         </script>
 
-        <footer style="text-align: center; color: #fff; background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); margin-top: 20px;">
-            <!-- This is the footer at the bottom of the page -->
-            <p style="font-size: 16px; line-height: 1.4;">&copy; 2025 Kewlest. All rights reserved. | <a href="#" style="color: #ff17b4; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #ff17b4; text-decoration: none;">Contact Us</a></p>
-            <!-- This shows the copyright information and links to the privacy policy and contact page -->
-            <p style="font-size: 14px; line-height: 1.4;">Follow us on <a href="#" style="color: #ff17b4; text-decoration: none;">Instagram</a>, <a href="#" style="color: #ff17b4; text-decoration: none;">Twitter</a>, and <a href="#" style="color: #ff17b4; text-decoration: none;">Facebook</a> for the latest updates and magical music moments!</p>
-            <!-- This encourages people to follow on social media for updates -->
-        </footer>
+<footer style="text-align: center; color: #fff; background: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); margin-top: 20px;">
+    <div>
+        <p style="font-size: 20px; line-height: 1.5; margin: 0;">Suam magīam<br>lēctiō quae nōs ad vītam<br>Omnem occāsiōnem</p>
+        <div style="margin-top: 10px;">
+            <p class="footer-description">You feel stuck in a world<br>where there is neither appreciation nor life,<br>when you feel like you are disappearing,<br>where a new beginning is only a distant dream,<br>you cannot fully find the living essence of who you are<br>if you do not accept the opportunity to renew it.</p>
+        </div>
+    </div>
+    <p style="font-size: 16px; line-height: 1.4; margin: 10px 0;">&copy; 2025 Kewlest. All rights reserved. | <a href="#" style="color: #ff17b4; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #ff17b4; text-decoration: none;">Contact Us</a></p>
+    <p class="footer-social">Follow us on <a href="#" class="footer-link">Instagram</a>, <a href="#" class="footer-link">Twitter</a>, and <a href="#" class="footer-link">Facebook</a> for the latest updates and magical music moments!</p>
+</footer>
+
     </main>
     <br><br><br><br><br> <!-- More empty spaces to push the music mixer down -->
 
@@ -295,170 +340,170 @@
             <!-- This is where we put the buttons for playing music -->
             <button id="playButton">
                 <!-- This button plays random music -->
-                <img src="https://raw.githubusercontent.com/thaumaturgists/Kewlest/refs/heads/main/feather.png" alt="Kewlest" style="max-width: 15px; height: 15px; margin-right: 5px;">Play Random Music
+                <img src="./feather.png" alt="Kewlest" style="max-width: 15px; height: 15px; margin-right: 5px;">Play Random Music
             </button>
             <button id="toggleButton">-</button>
             <!-- This button minimizes or expands the music mixer -->
         </div>
         <div id="musicContainer"></div>
         <!-- This is where the music will play -->
-        <h6 id="footer">&#x00A9; Kewlest</h6>
+        <h6 id="music-footer">&#x00A9; Kewlest</h6>
         <!-- This shows the copyright information for the music mixer -->
     </div>
     <script>
         const musicList = [ // This is where we will put the list of songs
             // Each song has a source (where to find it) and a title (what it's called)
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the first playlist that will play automatically
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the first playlist that will play automatically
                 title: "Trending Music - Indie" // This is the name of the first playlist
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the second playlist that will play automatically
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the second playlist that will play automatically
                 title: "Trending Music - Pop" // This is the name of the second playlist
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the third playlist that will play automatically
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false", // This is the link to the third playlist that will play automatically
                 title: "Trending Music - R&B" // This is the name of the third playlist
             },
             // You can add more playlists here by following the same format
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880479&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880479&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Trending Music - Techno"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880714&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880714&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Trending Music - Electronic"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841554947&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841554947&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Rock"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555094&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555094&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Metal"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168467&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168467&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Hip Hop & Rap"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Tomorrow's Hits Today: Fizz"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880509&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880509&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Rock, Metal, Punk"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880701&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880701&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Folk"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880755&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880755&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "All genres"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880503&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880503&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Soul"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880683&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880683&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Hip Hop & Rap"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880620&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880620&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Jazz"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880737&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880737&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Country"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880668&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880668&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "House"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880530&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880530&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Latin"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880551&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880551&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Reggae"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555370&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1841555370&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Indie"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168443&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168443&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing R&B"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168458&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168458&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Pop"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1988906940&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1988906940&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Mexico"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168491&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1780168491&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Buzzing Electronic"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1661765643&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1661765643&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Ascending: Rising Global Artists"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1715458305&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1715458305&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Tracks Of The Week"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1755110142&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1755110142&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "New & Exclusive"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795508844&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795508844&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "First Listen"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795755891&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795755891&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Album Of The Week"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/735289128&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/735289128&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "New Rock Now: The Dive"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/737559654&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Tomorrow's Hits Today: Fizz"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728776461&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728776461&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Indie New Arrivals: Stitches"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/734469195&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/734469195&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Emerging Indie: Dreams"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728553000&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728553000&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Fresh Pop Picks: Ear Candy"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1109034904&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1109034904&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Fresh Latin Music: Fresco"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/454981347&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/454981347&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Fresh Pressed Friday"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728525595&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/728525595&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Best New R&B: Vibes"
             },
             {
-                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/787457085&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=false&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
+                src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/787457085&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
                 title: "Essential New Music: NEW + NOW"
             }
         ];
