@@ -1,0 +1,24 @@
+{
+  "name": "kewlest",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://thaumaturgists.github.io/Kewlest",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "gh-pages": "3.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "webpack": "^5.88.0"
+  }
+}
