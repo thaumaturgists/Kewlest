@@ -8,8 +8,24 @@
 </head>
 <body>
     <div id="tsx-root"></div>
-    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
-    <script src="script.js"></script> <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script>
+        // Simple TSX Component
+        const TsxExample = () => {
+            return (
+                <div>
+                    <h1>Hello from TSX!</h1>
+                    <p>This is a simple example of a TSX component.</p>
+                </div>
+            );
+        };
+
+        // Render the TSX Component
+        const root = document.getElementById('tsx-root');
+        if (root) {
+            ReactDOM.render(<TsxExample />, root);
+        }
+    </script>
 </body>
 </html>
