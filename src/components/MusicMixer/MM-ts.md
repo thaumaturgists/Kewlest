@@ -422,7 +422,6 @@ This command is perfectly valid and is often preferred because it ensures that y
 
 You can keep the command `npx tsc --init` in the guide as it is the correct way to initialize the TypeScript configuration file when TypeScript is installed locally. Here’s the relevant section updated for clarity:
 
-```markdown
 ## Step 2: Install TypeScript
 
 1. **Install TypeScript as a development dependency:**
