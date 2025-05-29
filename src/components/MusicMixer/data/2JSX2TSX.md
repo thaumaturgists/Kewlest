@@ -5,18 +5,18 @@ import React, { useState } from 'react';
 
 const MusicMixer = () => {
     const musicList = [
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Indie"
-        },
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Pop"
-        },
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - R&B"
-        }
+            {
+                src: "YOUR_MUSIC_LINK_1", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 1" // Replace with your own title
+            },
+            {
+                src: "YOUR_MUSIC_LINK_2", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 2" // Replace with your own title
+            },
+            {
+                src: "YOUR_MUSIC_LINK_3", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 3" // Replace with your own title
+            }
     ];
 
     const [currentMusic, setCurrentMusic] = useState(null);
@@ -182,18 +182,18 @@ interface Music {
 
 const MusicMixer: React.FC = () => {
     const musicList: Music[] = [
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Indie"
-        },
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Pop"
-        },
-        {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - R&B"
-        }
+            {
+                src: "YOUR_MUSIC_LINK_1", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 1" // Replace with your own title
+            },
+            {
+                src: "YOUR_MUSIC_LINK_2", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 2" // Replace with your own title
+            },
+            {
+                src: "YOUR_MUSIC_LINK_3", // Replace with your own SoundCloud playlist link
+                title: "Your Playlist Title 3" // Replace with your own title
+            }
     ];
 
     const [currentMusic, setCurrentMusic] = useState<string | null>(null);
@@ -281,16 +281,16 @@ interface Music {
 const MusicMixer: React.FC = () => {
     const musicList: Music[] = [
         {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880641&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Indie"
+            src: "YOUR_MUSIC_LINK_1", // Replace with your own SoundCloud playlist link
+            title: "Your Playlist Title 1" // Replace with your own title
         },
         {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880599&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - Pop"
+            src: "YOUR_MUSIC_LINK_2", // Replace with your own SoundCloud playlist link
+            title: "Your Playlist Title 2" // Replace with your own title
         },
         {
-            src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734880578&auto_play=true&show_artwork=false&show_comments=false&hide_related=true&show_user=true&buying=false&liking=false&show_playcount=false&sharing=false&show_reposts=false&show_teaser=true&visual=false&download=false",
-            title: "Trending Music - R&B"
+            src: "YOUR_MUSIC_LINK_3", // Replace with your own SoundCloud playlist link
+            title: "Your Playlist Title 3" // Replace with your own title
         }
     ];
 
