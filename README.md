@@ -47,7 +47,8 @@ npm install
 ```
 
 ### Running the Project
-// IN THE PROCESS OF MAKING THIS
+> IN THE PROCESS OF DEVELOPING THIS
+
 To run the project locally, use the following command:
 
 ```bash
