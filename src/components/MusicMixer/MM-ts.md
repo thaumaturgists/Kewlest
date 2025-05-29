@@ -104,7 +104,6 @@ Here’s a sample `tsconfig.json` file that you can use for your TypeScript proj
 
 You can copy and paste these examples into your project files. Adjust the fields as necessary to fit your project requirements, such as the author name and any additional dependencies you may need in the future.
 
-```markdown
 # Music Mixer Setup Guide
 
 This guide will help you set up a Music Mixer application using TypeScript. Follow the steps below to create a repository, add the necessary files, and run the application.
