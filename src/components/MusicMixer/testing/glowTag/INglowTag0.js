@@ -1,4 +1,4 @@
-// glowTag.js
+// glowTag0.js
 (function() {
 const __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
