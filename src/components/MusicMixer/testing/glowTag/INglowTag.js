@@ -35,7 +35,7 @@ style.textContent = `
             0 0 5px rgba(255, 255, 255, 0.8), /* White glow */
             0 0 10px rgba(255, 255, 255, 0.6), 
             0 0 15px rgba(255, 255, 255, 0.4);
-       /* background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat;  Use external SVG */
+        background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat; /* Use external SVG */
         background-size: cover;
         filter: blur(1.5px); /* Slight blur to obscure text */
     }
