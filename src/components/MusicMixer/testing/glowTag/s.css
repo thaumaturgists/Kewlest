@@ -1,0 +1,10 @@
+        .glow {
+            color: transparent; /* Make the text transparent */
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.8), /* White glow */
+                0 0 10px rgba(255, 255, 255, 0.6), 
+                0 0 15px rgba(255, 255, 255, 0.4);
+            background: url('./wavri.svg') no-repeat; /* Use external SVG */
+            background-size: cover;
+            filter: blur(1.5px); /* Slight blur to obscure text */
+        }

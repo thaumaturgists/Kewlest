@@ -1,6 +1,3 @@
-Certainly! Below is a detailed `README.md` specifically for the `/docs` directory of your project. This document will help new users understand the purpose of the documentation directory and how to navigate it.
-
-```markdown
 # Documentation Directory
 
 ## Overview

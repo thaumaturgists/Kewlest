@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsing Glowing Text</title>
+    <script>
+        // script.js
+        (function() {
+            // Create a style element
+            const style = document.createElement('style');
+            document.head.appendChild(style);
+
+            // Define CSS for pulsing glowing effect
+            style.innerHTML = `
+                body {
+                    background-color: black;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                }
+
+                h1, h2, h3, p {
+                    color: white;
+                    font-size: 30px;
+                    text-align: center;
+                    transition: text-shadow 0.5s ease, opacity 0.5s ease;
+                }
+
+                h1:hover, h2:hover, h3:hover, p:hover {
+                    text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+                    opacity: 0.8;
+                }
+            `;
+
+            // Select all elements to apply the glow effect
+            const elementsToGlow = ['h1', 'h2', 'h3', 'p']; // Add or remove tags as needed
+
+            // Function to add the glow class to selected elements
+            function applyGlow() {
+                elementsToGlow.forEach(tag => {
+                    const elements = document.querySelectorAll(tag);
+                    elements.forEach(element => {
+                        element.classList.add('glow');
+                    });
+                });
+            }
+
+            // Call the function to apply the glow effect
+            document.addEventListener('DOMContentLoaded', applyGlow);
+        })();
+    </script>
+</head>
+<body>
+    <h1>Magical Pulsing Header 1</h1>
+    <h2>Magical Pulsing Header 2</h2>
+    <h3>Magical Pulsing Header 3</h3>
+    <p>This is a magical pulsing paragraph.</p>
+    <p>This is another magical pulsing paragraph.</p>
+</body>
+</html>
