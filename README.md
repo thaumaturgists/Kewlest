@@ -39,7 +39,7 @@ Kewlest/
 ## Getting Started
 
 To get started with Kewlest, clone the repository and install the necessary dependencies:
-> I've commented out json in the project as it is set up for gh-pages, and there are some dependency issues with react.
+> I've commented out JSON in the project as it is set up for gh-pages, and there are some dependency issues with React.
 ```bash
 git clone https://github.com/thaumaturgists/Kewlest.git
 cd Kewlest
@@ -63,7 +63,7 @@ Kewlest/
 ### Running the Project
 > IN THE PROCESS OF DEVELOPING THIS
 
-> Deploying React on gh-pages I would use yml and Ci pipeline, currently there are some major security issues I found when testing. But have no worries as this matters not to my project.
+> Deploying REACT on gh-pages I would use yml and Ci pipeline, currently there are some major security issues I found when testing. But have no worries as this matters not to my project.
 ```bah
 npm audit
 # npm audit report
@@ -103,9 +103,9 @@ node_modules/resolve-url-loader/node_modules/postcss
 ```
 # Another Great Start
 
-If you wish to build a full on app another great start is following the guide on developing [electron](https://www.electronjs.org/docs/latest/development/build-instructions-gn), and if you wish me to help with that feel free to ask through GitHub, and I will get to you as soon as I can!
+If you wish to build a full on app another great start is following the guide on developing [Electron](https://www.electronjs.org/docs/latest/development/build-instructions-gn), and if you wish me to help with that feel free to ask through GitHub, and I will get to you as soon as I can!
 
-After the project is built in electron locally, use the following command:
+After the project is built in Electron locally, use the following command:
 
 ```bash
 npm start
