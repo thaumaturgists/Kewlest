@@ -137,7 +137,7 @@ Here’s an example of what your `package.json` file should look like:
   "private": true,
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0,
+    "react-dom": "^18.0.0,"
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.3"
   },
