@@ -1,32 +1,38 @@
-{
-  "name": "kewlest",
-  "version": "1.0.0",
-  "private": true,
-  "homepage": "https://thaumaturgists.github.io/Kewlest",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "dependencies": {
-    "gh-pages": "3.2.3",
-    "react-scripts": "5.0.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.27.3",
-    "@babel/preset-env": "^7.27.2",
-    "@babel/preset-react": "^7.27.1",
-    "babel-loader": "^10.0.0",
-    "eslint": "^8.39.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
-  },
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  }
-}
+// {
+//   "name": "kewlest",
+//   "version": "1.0.0",
+//   "private": true,
+//   "homepage": "https://thaumaturgists.github.io/Kewlest",
+//   "scripts": {
+//     "start": "react-scripts start",
+//     "build": "react-scripts build",
+//     "test": "react-scripts test",
+//     "eject": "react-scripts eject",
+//     "predeploy": "npm run build",
+//     "deploy": "gh-pages -d build"
+//   },
+//   "dependencies": {
+//     "gh-pages": "^3.2.3",
+//     "react": "^19.1.0",
+//     "react-dom": "^19.1.0",
+//     "react-scripts": "5.0.1"
+//   },
+//   "devDependencies": {
+//     "@typescript-eslint/eslint-plugin": "^8.33.0",
+//     "@typescript-eslint/parser": "^8.33.0",
+//     "eslint": "^8.57.1",
+//     "typescript": "^5.3.0"
+//   },
+//   "description": "Kewlest project - A React-based web application.",
+//   "main": "index.js",
+//   "directories": {
+//     "doc": "docs"
+//   },
+//   "keywords": [
+//     "react",
+//     "webapp",
+//     "typescript"
+//   ],
+//   "author": "Connor Adams",
+//   "license": "MIT"
+// }

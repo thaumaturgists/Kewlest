@@ -3,62 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulsing Glowing Text</title>
-    <script>
-        // script.js
-        (function() {
-            // Create a style element
-            const style = document.createElement('style');
-            document.head.appendChild(style);
-
-            // Define CSS for pulsing glowing effect
-            style.innerHTML = `
+    <title>Magical Pulsing Text</title>
+    <style>
                 body {
-                    background-color: black;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                    margin: 0;
-                }
+            background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* A pretty background that fades from one color to another */
+            font-family: 'Cursive', sans-serif; /* Changes the font style for the whole page */
+            color: #fff; /* Sets the text color to white */
+            margin: 0; /* Removes any margin around the body */
+            padding: 20px; /* Adds space inside the body */
+            height: 100vh; /* Makes the body take up the full height of the screen */
+            display: flex; /* Makes the body a flexible box */
+            justify-content: center; /* Centers the content horizontally */
+            align-items: flex-start; /* Aligns items to the start to avoid cutting off */
+            overflow: auto; /* Ensures overflow is handled */
+        }
+        /* Add any additional styles here if needed */
+        .highlight {
+            color: #ffcc00; /* Example highlight color */
+        }
+.bionic-text {
+    font-weight: bold; /* Make the highlighted part bold */
+    text-decoration: underline; /* Underline the highlighted part */
+    background-color: rgba(255, 204, 0, 0.3); /* Light yellow background for emphasis */
+    border-radius: 3px; /* Slightly rounded corners */
+    padding: 2px 4px; /* Add some padding around the text */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
 
-                h1, h2, h3, p {
-                    color: white;
-                    font-size: 30px;
-                    text-align: center;
-                    transition: text-shadow 0.5s ease, opacity 0.5s ease;
-                }
+.bionic-text:hover {
+    background-color: rgba(255, 204, 0, 0.5); /* Darker background on hover */
+}
 
-                h1:hover, h2:hover, h3:hover, p:hover {
-                    text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
-                    opacity: 0.8;
-                }
-            `;
-
-            // Select all elements to apply the glow effect
-            const elementsToGlow = ['h1', 'h2', 'h3', 'p']; // Add or remove tags as needed
-
-            // Function to add the glow class to selected elements
-            function applyGlow() {
-                elementsToGlow.forEach(tag => {
-                    const elements = document.querySelectorAll(tag);
-                    elements.forEach(element => {
-                        element.classList.add('glow');
-                    });
-                });
+        glow-tag {
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .glow {
+            color: transparent;
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.8),
+                0 0 10px rgba(255, 255, 255, 0.6), 
+                0 0 15px rgba(255, 255, 255, 0.4);
+            background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat;
+            background-size: cover;
+            filter: blur(1.5px);
+        }
+        .glow::before {
+            content: "";
+            color: #000;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            filter: blur(0.5px);
+        }
+        .fade-glow {
+            color: #1225;
+            animation: fade 10s infinite;
+        }
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0.5;
             }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+<script>
+    // This script runs when the page is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const selectors = [
+            "#content h1", // This selects the big title
+            "#content h2", // This selects all the subheadings
+            "#content p",  // This selects all the paragraphs
+        ];
 
-            // Call the function to apply the glow effect
-            document.addEventListener('DOMContentLoaded', applyGlow);
-        })();
-    </script>
+        const applyBionicText = (element) => {
+            const words = element.innerText.split(" ");
+            const bionicText = words.map(word => {
+                const splitIndex = Math.ceil(word.length / 2);
+                const highlightedPart = word.slice(0, splitIndex);
+                const remainingPart = word.slice(splitIndex);
+                return `<span class="highlight bionic-text">${highlightedPart}</span>${remainingPart}`; // Add bionic-text class
+            }).join(" ");
+            element.innerHTML = bionicText;
+        };
+
+        const applyGlowText = (element) => {
+            const words = element.innerHTML.split(/(<span class="highlight bionic-text">.*?<\/span>)/g); // Split by bionic text
+            const glowText = words.map(part => {
+                // Check if the part is a bionic text span
+                if (part.startsWith('<span class="highlight bionic-text">')) {
+                    return part; // Return the bionic text unchanged
+                } else {
+                    const word = part.trim();
+                    if (word.length > 0) {
+                        const splitIndex = Math.ceil(word.length / 2);
+                        const remainingPart = word.slice(splitIndex);
+                        // Add glow class with inline styles for fading effect
+                        return `${word.slice(0, splitIndex)}<span style="color: rgba(255, 255, 255, 0.8); text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6); animation: fade 1.5s infinite;">${remainingPart}</span>`; // Add glow class to the second part
+                    }
+                    return part; // Return empty parts unchanged
+                }
+            }).join("");
+            element.innerHTML = glowText; // Set the glow text
+        };
+
+        selectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                applyBionicText(element); // Apply bionic text first
+                applyGlowText(element); // Then apply glow effect to the second part
+            });
+        });
+
+        // Glow effect logic
+        const elementsToGlow = [
+            'glow-tag p',
+            'glow-tag h1',
+            'glow-tag h2',
+            'glow-tag h3',
+            'glow-tag h4',
+            'glow-tag h5',
+            'glow-tag h6'
+        ];
+
+        function applyGlow() {
+            elementsToGlow.forEach(function (tag) {
+                document.querySelectorAll(tag).forEach(function (element) {
+                    if (element instanceof HTMLElement) {
+                        // Check if the element does NOT have the bionic-text class
+                        if (!element.classList.contains('bionic-text')) {
+                            element.classList.add('glow', 'fade-glow'); // Add both classes
+                        } else {
+                            element.classList.add('glow'); // Only add glow class if it has bionic-text
+                        }
+                    }
+                });
+            });
+        }
+
+        // Apply the glow effect once the DOM is fully loaded
+        applyGlow();
+    });
+
+    // Add the fade animation to the document
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+
+
 </head>
-<body>
-    <h1>Magical Pulsing Header 1</h1>
-    <h2>Magical Pulsing Header 2</h2>
-    <h3>Magical Pulsing Header 3</h3>
-    <p>This is a magical pulsing paragraph.</p>
-    <p>This is another magical pulsing paragraph.</p>
+<body><glow-tag>
+    <div id="content">
+        <h1>Magical Pulsing Header 1</h1>
+        <h2>Magical Pulsing Header 2</h2>
+        <h3>Magical Pulsing Header 3</h3>
+        <p>This is a magical pulsing paragraph.</p>
+        <p>This is another magical pulsing paragraph.</p>
+    </div>
 </body>
 </html>
