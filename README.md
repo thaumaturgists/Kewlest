@@ -114,6 +114,32 @@ This will start the development server and open the application in Electron.
 
 Visit the [Kewlest website](https://thaumaturgists.github.io/Kewlest/) to see a live demonstration of the music player. I hope you enjoy it as much as I loved creating it!
 
+### React Showcase
+
+To see a working example of a musicMixer.jsx set up using type/bable, you can either scroll to the bottom of the Kewlest website, and click on the [JSX](https://thaumaturgists.github.io/Kewlest/jsx-example.html) link, or click it here!
+#### Simple HTML used:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Mixer</title>
+    
+    <!-- Load React, ReactDOM & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Load Your JSX Component -->
+    <script type="text/babel" src="./musicMixer.jsx"></script>
+</body>
+</html>
+```
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
