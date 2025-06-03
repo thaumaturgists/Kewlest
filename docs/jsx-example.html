@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSX Example</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional CSS -->
+    <title>Music Mixer</title>
+    
+    <!-- Load React, ReactDOM & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
 </head>
 <body>
-    <h1>Future Test for Loading React JSX Player</h1>
-    <!-- <div id="jsx-root"></div>
-    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
-    <script src="script.js"></script> Optional JavaScript -->
+    <div id="root"></div>
+
+    <!-- Load Your JSX Component -->
+    <script type="text/babel" src="./musicMixer.jsx"></script>
 </body>
 </html>
