@@ -32,9 +32,34 @@ const MusicMixer = () => {
     const [currentMusic, setCurrentMusic] = React.useState(null);
     const [isMinimized, setIsMinimized] = React.useState(false);
 
+    // Function to get a random number between min and max (inclusive)
+    const getRandomNumber = (min, max) => {
+        const array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        return Math.floor(array[0] % (max - min + 1)) + min;
+    };
+
+    // This function plays a random song from our list.
     const playRandomMusic = () => {
-        const randomIndex = Math.floor(Math.random() * musicList.length);
-        setCurrentMusic(musicList[randomIndex].src);
+        try {
+            // We pick a random song from our music list.
+            const randomIndex = getRandomNumber(0, musicList.length - 1);
+            const selectedMusic = musicList[randomIndex]; // This is the song we picked.
+            const musicSrc = selectedMusic.src; // This is the link to the song.
+
+            // We pick a random number between 1 and 4 to start the song at a random point.
+            const randomNumber = getRandomNumber(1, 4);
+
+            // We add the random number to the song's link so it starts at a different place.
+            const modifiedSrc = `${musicSrc}&start_track=${randomNumber}`;
+
+            // We save the modified song link in our currentMusic state.
+            setCurrentMusic(modifiedSrc);
+        } catch (error) {
+            // If something goes wrong, we show an error message.
+            console.error('Error playing music:', error);
+            alert('An error occurred while trying to play music. Please try again later.');
+        }
     };
 
     const toggleMinimize = () => {
@@ -137,7 +162,7 @@ const MusicMixer = () => {
                     onMouseOver={(e) => Object.assign(e.currentTarget.style, styles.toggleButtonHover)} // Change style on hover
                     onMouseOut={(e) => Object.assign(e.currentTarget.style, styles.toggleButton)} // Change back style when not hovering
                 >
-                    {isMinimized ? '+' : '-'} {/*// Show '+' if minimized, '-' if not*/}
+                    {isMinimized ? '+' : '-'} {/* Show '+' if minimized, '-' if not */}
                 </button>
             </div>
             <div id="musicContainer" style={styles.musicContainer}>
@@ -152,7 +177,15 @@ const MusicMixer = () => {
                     ></iframe>
                 )}
             </div>
-            <h6 id="music-footer" style={styles.musicFooter}>&#x00A9; Kewlest</h6> {/*// Footer with copyright text*/}
+            <h6 id="music-footer" style={styles.musicFooter}>                <button
+                    id="toggleButton"
+                    style={styles.toggleButton}
+                    onClick={toggleMinimize} // Toggle minimize when clicked
+                    onMouseOver={(e) => Object.assign(e.currentTarget.style, styles.toggleButtonHover)} // Change style on hover
+                    onMouseOut={(e) => Object.assign(e.currentTarget.style, styles.toggleButton)} // Change back style when not hovering
+                >
+                    {isMinimized ? '+' : '-'} {/* Show '+' if minimized, '-' if not */}
+                </button>&#x00A9; Kewlest</h6> {/* Footer with copyright text */}
         </div>
     );
 };
