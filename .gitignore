@@ -147,7 +147,7 @@ Thumbs.db
 
 # Ignore compiled JavaScript files if using TypeScript
 *.js
-*.jsx
+# *.jsx
 
 # Ignore compiled TypeScript files if using JSX/TSX
 *.tsx
