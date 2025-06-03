@@ -9,6 +9,47 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a clean font for the body */
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+        }
+
+        #root {
+            display: flex; /* Flexbox for the root element */
+            justify-content: center; /* Center content */
+            align-items: center; /* Center content */
+            width: 100%; /* Full width */
+            max-width: 600px; /* Max width for the mixer */
+            margin: auto; /* Center the root element */
+        }
+
+        button {
+            background-color: rgba(245, 0, 16, 0); /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s ease; /* Smooth background transition */
+            font-size: 16px; /* Font size for buttons */
+        }
+
+        button:hover {
+            background-color: rgba(255, 85, 0, 1); /* Change background on hover */
+        }
+
+        iframe {
+            border-radius: 8px; /* Rounded corners for the iframe */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
