@@ -1,31 +1,28 @@
-<!DOCTYPE html> <!-- https://github.com/thaumaturgists/Kewlest -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png"><link rel="shortcut icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png"> <!-- Using this as a place holder for icon (Remember to change type to ico, type="image/x-icon, when using iso, The recommended size for a favicon is 16x16 pixels or 32x32 pixels -->
-    <meta charset="UTF-8"> <!-- This tells the browser to read the text in a special way (UTF-8) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This makes sure the page looks good on all devices -->
+    <link rel="icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- This helps protect against certain types of attacks -->
-    <meta name="referrer" content="no-referrer"> <!-- This controls how much information is shared with other sites, no-referrer(no info), strict-origin-when-cross-origin(only sends the origin)  -->
-    <meta http-equiv="Permissions-Policy" content="*=(), geolocation=(), microphone=(), camera=(), fullscreen=(self), payment=(), notifications=(), push=(), midi=(), sync-xhr=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard=(), document-domain=(), web-share=(), screen-orientation=(), xr-spatial-tracking=(), camera-stream=(), microphone-stream=(), idle-detection=(), web-bluetooth=(), web-nfc=(), web-usb=(), web-serial=(), local-storage=(), session-storage=(), clipboard-read=(), clipboard-write=(), fullscreen-element=(), wake-lock=(), screen-capture=(), document-visibility=(), media-capabilities=(), autoplay=(self), picture-in-picture=(self), web-share-target=()"> <!-- This is like a set of rules for the website. It tells the website what it can and can't do, like using the camera or microphone. The part that says "*=()" means "no permissions allowed," but when it says "(self)" for things like fullscreen and autoplay, it means those can work just for this website. So, it’s like saying, "You can use these things, but not anything else!" :) -->
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!-- This helps keep the site secure by forcing it to use HTTPS -->
-    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer, set on the server side and this does not mean it is set from here -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Permissions-Policy" content="*=(), geolocation=(), microphone=(), camera=(), fullscreen=(self), payment=(), notifications=(), push=(), midi=(), sync-xhr=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard=(), document-domain=(), web-share=(), screen-orientation=(), xr-spatial-tracking=(), camera-stream=(), microphone-stream=(), idle-detection=(), web-bluetooth=(), web-nfc=(), web-usb=(), web-serial=(), local-storage=(), session-storage=(), clipboard-read=(), clipboard-write=(), fullscreen-element=(), wake-lock=(), screen-capture=(), document-visibility=(), media-capabilities=(), autoplay=(self), picture-in-picture=(self), web-share-target=()">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta http-equiv="X-Frame-Options" content="DENY">
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
-    <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
-    default-src 'self'; script-src 'self' 'nonce-<RANDOM_NONCE>'; style-src 'self' 'nonce-<RANDOM_NONCE>'; report-uri /csp-violation-report-endpoint;
-    Content-Security-Policy: frame-ancestors 'self' https://w.soundcloud.com https://soundcloud.com; // Set on server side
-    -->
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;">
 
     <!-- SEO Optimization -->
-    <meta name="description" content="Music Mixer - A simple yet powerful music randomizer. Play indie hits or trending tunes with ease."> <!-- This describes what the site is about for search engines -->
-    <meta name="keywords" content="Music Mixer, Play Random Music, SoundCloud, Indie Music, Trending Songs"> <!-- These are important words related to the site -->
-    <meta name="author" content="Kewlest"> <!-- This tells who made the site -->
+    <meta name="description" content="Music Mixer - A simple yet powerful music randomizer. Play indie hits or trending tunes with ease.">
+    <meta name="keywords" content="Music Mixer, Play Random Music, SoundCloud, Indie Music, Trending Songs">
+    <meta name="author" content="Kewlest">
 
-    <title>Music Mixer</title> <!-- This is the title of the page that shows up in the browser tab -->
-    
+    <title>Music Mixer JSX Showcase example</title>
+
     <!-- Load React, ReactDOM & Babel -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -33,48 +30,146 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif; /* Set a clean font for the body */
-            background-color: #f0f0f0; /* Light gray background */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            height: 100vh; /* Full viewport height */
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa; /* Light cyan background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling on small screens */
         }
 
-        #root {
-            display: flex; /* Flexbox for the root element */
-            justify-content: center; /* Center content */
-            align-items: center; /* Center content */
-            width: 100%; /* Full width */
-            max-width: 600px; /* Max width for the mixer */
-            margin: auto; /* Center the root element */
+        #root1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the start */
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in width calculations */
+            max-height: 90vh; /* Limit the height of the container */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         button {
-            background-color: rgba(245, 0, 16, 0); /* Button background color */
-            color: white; /* Button text color */
-            border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background 0.3s ease; /* Smooth background transition */
-            font-size: 16px; /* Font size for buttons */
+            background-color: #ff5722; /* Vibrant orange */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 16px;
+            padding: 10px 15px;
+            width: 40%; /* Full width for buttons */
         }
 
         button:hover {
-            background-color: rgba(255, 85, 0, 1); /* Change background on hover */
+            background-color: #e64a19; /* Darker orange on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
         iframe {
-            border-radius: 8px; /* Rounded corners for the iframe */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            width: 100%; /* Full width for the iframe */
+            height: 300px; /* Set height for the music player */
+        }
+
+        .music-footer {
+            background-color: #ff5722; /* Match footer with button color */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Cursive';
+            font-weight: bold;
+            width: 100%; /* Full width for footer */
+        }
+
+        .description {
+            margin: 20px 0;
+            text-align: left;
+            font-size: 14px;
+            color: #333;
+            width: 100%; /* Full width for description */
+        }
+
+        h2 {
+            color: #ff5722; /* Header color */
+            margin-bottom: 10px; /* Space below headers */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px; /* Add padding on small screens */
+            }
+
+            #root1 {
+                padding: 15px; /* Reduce padding for smaller screens */
+            }
+
+            button {
+                font-size: 14px; /* Smaller font size for buttons */
+                padding: 8px; /* Adjust padding for buttons */
+            }
+
+            .description {
+                font-size: 12px; /* Smaller font size for description */
+            }
+
+            iframe {
+                height: 250px; /* Reduce height of iframe on small screens */
+            }
         }
     </style>
 </head>
 <body>
+    <div id="root1">
+        <div class="description">
+            <h2>HTML File Description</h2>
+            <p>The HTML file serves as the main structure of the web application. Here are its key components:</p>
+            <ul>
+                <li><strong>Document Structure:</strong> The document starts with a <code>&lt;!DOCTYPE html&gt;</code> declaration, indicating that it is an HTML5 document. The <code>&lt;html&gt;</code> element specifies the language as English.</li>
+                <li><strong>Head Section:</strong>
+                    <ul>
+                        <li><strong>Favicon:</strong> Links to a feather icon that serves as the website's favicon.</li>
+                        <li><strong>Meta Tags:</strong> Includes character set, viewport settings for responsive design, and various security headers to enhance the site's security.</li>
+                        <li><strong>SEO Optimization:</strong> Contains meta tags for description, keywords, and author to improve search engine visibility.</li>
+                        <li><strong>Title:</strong> Sets the title of the page as "Music Mixer JSX Showcase example."</li>
+                        <li><strong>Scripts:</strong> Loads React, ReactDOM, and Babel for JSX support.</li>
+                    </ul>
+                </li>
+                <li><strong>Styles:</strong> The <code>&lt;style&gt;</code> section contains CSS rules that define the appearance of the application, including body styles, button styles, and iframe styles.</li>
+                <li><strong>Body Section:</strong> Contains a <code>&lt;div&gt;</code> with the ID <code>root</code>, which serves as the mounting point for the React application. A script tag loads the <code>musicMixer.jsx</code> file, which contains the React component.</li>
+            </ul>
+            
+            <h2>JSX File Description</h2>
+            <p>The <code>musicMixer.jsx</code> file defines the MusicMixer React component, which implements the functionality of the music mixer. Here are its key components:</p>
+            <ul>
+                <li><strong>Music List:</strong> An array of music playlists, each containing a source URL and a title.</li>
+                <li><strong>State Management:</strong> Uses React's <code>useState</code> hook to manage the current music being played and whether the mixer is minimized.</li>
+                <li><strong>Functions:</strong>
+                    <ul>
+                        <li><code>playRandomMusic:</code> Selects a random music playlist from the list and updates the state.</li>
+                        <li><code>toggleMinimize:</code> Toggles the minimized state of the music mixer.</li>
+                    </ul>
+                </li>
+                <li><strong>Styles:</strong> Inline styles are defined for various elements, including the music mixer container, buttons, and footer.</li>
+                <li><strong>Render Method:</strong> Returns a JSX structure that includes buttons for playing music and toggling the minimized state, as well as an iframe for the music player and a footer.</li>
+            </ul>
+        </div>
+        <br>
     <div id="root"></div>
-
     <!-- Load Your JSX Component -->
     <script type="text/babel" src="./musicMixer.jsx"></script>
 </body>
