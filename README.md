@@ -59,7 +59,7 @@ To begin using React, you can follow the guides in the folders [MM-jsx.md](https
 ```
 
 ### Running the Project
-> ISSUE Date: 06/03/25
+> ISSUE Date: 06/03/2025
 > 
 > For deploying React on GitHub Pages, I plan to utilize YAML and a CI pipeline. While I have identified some significant security issues during testing, there is no cause for concern, as these do not impact my project.
 ```bah
