@@ -1,9 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- https://github.com/thaumaturgists/Kewlest -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Mixer</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png"><link rel="shortcut icon" href="https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png" type="image/png"> <!-- Using this as a place holder for icon (Remember to change type to ico, type="image/x-icon, when using iso, The recommended size for a favicon is 16x16 pixels or 32x32 pixels -->
+    <meta charset="UTF-8"> <!-- This tells the browser to read the text in a special way (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This makes sure the page looks good on all devices -->
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- This helps protect against certain types of attacks -->
+    <meta name="referrer" content="no-referrer"> <!-- This controls how much information is shared with other sites, no-referrer(no info), strict-origin-when-cross-origin(only sends the origin)  -->
+    <meta http-equiv="Permissions-Policy" content="*=(), geolocation=(), microphone=(), camera=(), fullscreen=(self), payment=(), notifications=(), push=(), midi=(), sync-xhr=(), screen-wake-lock=(), ambient-light-sensor=(), accelerometer=(), gyroscope=(), magnetometer=(), clipboard=(), document-domain=(), web-share=(), screen-orientation=(), xr-spatial-tracking=(), camera-stream=(), microphone-stream=(), idle-detection=(), web-bluetooth=(), web-nfc=(), web-usb=(), web-serial=(), local-storage=(), session-storage=(), clipboard-read=(), clipboard-write=(), fullscreen-element=(), wake-lock=(), screen-capture=(), document-visibility=(), media-capabilities=(), autoplay=(self), picture-in-picture=(self), web-share-target=()"> <!-- This is like a set of rules for the website. It tells the website what it can and can't do, like using the camera or microphone. The part that says "*=()" means "no permissions allowed," but when it says "(self)" for things like fullscreen and autoplay, it means those can work just for this website. So, it’s like saying, "You can use these things, but not anything else!" :) -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"> <!-- This helps keep the site secure by forcing it to use HTTPS -->
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer, set on the server side and this does not mean it is set from here -->
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
+    <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
+    default-src 'self'; script-src 'self' 'nonce-<RANDOM_NONCE>'; style-src 'self' 'nonce-<RANDOM_NONCE>'; report-uri /csp-violation-report-endpoint;
+    Content-Security-Policy: frame-ancestors 'self' https://w.soundcloud.com https://soundcloud.com; // Set on server side
+    -->
+
+    <!-- SEO Optimization -->
+    <meta name="description" content="Music Mixer - A simple yet powerful music randomizer. Play indie hits or trending tunes with ease."> <!-- This describes what the site is about for search engines -->
+    <meta name="keywords" content="Music Mixer, Play Random Music, SoundCloud, Indie Music, Trending Songs"> <!-- These are important words related to the site -->
+    <meta name="author" content="Kewlest"> <!-- This tells who made the site -->
+
+    <title>Music Mixer</title> <!-- This is the title of the page that shows up in the browser tab -->
     
     <!-- Load React, ReactDOM & Babel -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
