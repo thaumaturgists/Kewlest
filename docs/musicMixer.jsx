@@ -177,15 +177,7 @@ const MusicMixer = () => {
                     ></iframe>
                 )}
             </div>
-            <h6 id="music-footer" style={styles.musicFooter}>                <button
-                    id="toggleButton"
-                    style={styles.toggleButton}
-                    onClick={toggleMinimize} // Toggle minimize when clicked
-                    onMouseOver={(e) => Object.assign(e.currentTarget.style, styles.toggleButtonHover)} // Change style on hover
-                    onMouseOut={(e) => Object.assign(e.currentTarget.style, styles.toggleButton)} // Change back style when not hovering
-                >
-                    {isMinimized ? '+' : '-'} {/* Show '+' if minimized, '-' if not */}
-                </button>&#x00A9; Kewlest</h6> {/* Footer with copyright text */}
+            <h6 id="music-footer" style={styles.musicFooter}>&#x00A9; Kewlest</h6> {/* Footer with copyright text */}
         </div>
     );
 };
