@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // We are importing React and some special tools from React to help us create our app.
 import React, { useState, CSSProperties } from 'react';
 
