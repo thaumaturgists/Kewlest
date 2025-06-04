@@ -117,7 +117,7 @@ Visit the [Kewlest website](https://thaumaturgists.github.io/Kewlest/) to see a 
 
 ### React Showcase
 
-To see a working example of a musicMixer.jsx set up using type/bable, you can either scroll to the bottom of the Kewlest website, and click on the [JSX](https://thaumaturgists.github.io/Kewlest/jsx-example.html) link, or click it here!
+To see a working example of a musicMixer.jsx set up using ```<script type="text/babel" src="./musicMixer.jsx"></script>```, you can either scroll to the bottom of the Kewlest website, and click on the [JSX](https://thaumaturgists.github.io/Kewlest/jsx-example.html) link, or click it here!
 #### Simple HTML used:
 ```html
 <!DOCTYPE html>
