@@ -1156,16 +1156,17 @@ function randomBlur() {
 setInterval(randomBlur, 142857); // Adjusted to a more reasonable interval
 setInterval(randomBlur, 42857); // Adjusted to a more reasonable interval
 // setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
-setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
+// setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
 
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
     var styles = `
-        body {
-        background: 
-        url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png'), /* Background image */
+body {
+    background: 
+        url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png') no-repeat right, /* Background image positioned to the right */
         linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
-        }
+    background-size: cover; /* Ensures the background image covers the entire area */
+}
         .wrap-glow {
             position: relative; /* Positioning for glow effect */
             display: inline-block; /* Inline block for wrapping elements */
