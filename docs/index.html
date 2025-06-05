@@ -640,6 +640,7 @@ style.textContent = `
         background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat; /* Use external SVG */
         background-size: cover;
         filter: blur(1.5px); /* Slight blur to obscure text */
+        transition: filter 1s ease;
     }
 
     .glow::before {
@@ -649,6 +650,7 @@ style.textContent = `
         top: 0;
         z-index: 1;
         filter: blur(0.5px); /* Additional blur for obscurity */
+        transition: filter 1s ease;
     }
 
     .fade-glow {
@@ -755,6 +757,7 @@ style.textContent = `
         background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat; /* Use external SVG */
         background-size: cover;
         filter: blur(1.5px); /* Slight blur to obscure text */
+        transition: filter 1s ease; /* Smooth transition for blur */
     }
 
     .glow0::before {
@@ -764,6 +767,7 @@ style.textContent = `
         top: 0;
         z-index: 1;
         filter: blur(0.5px); /* Additional blur for obscurity */
+        transition: filter 1s ease; /* Smooth transition for blur */
     }
 
     .fade-glow0 {
@@ -774,12 +778,16 @@ style.textContent = `
     @keyframes fade {
         0%, 100% {
             opacity: 0.5;
+            filter: blur(1.5px); /* Initial blur */
         }
         50% {
             opacity: 1;
+            filter: blur(0.5px); /* Reduced blur for clarity */
+            transition: filter 1s ease;
         }
     }
 `;
+
 
 // Define the custom element
 const GlowTag = /** @class */ (function (_super) {
@@ -1142,8 +1150,8 @@ function getRandomInt(min, max) {
 
 // Function to randomly blur the screen
 function randomBlur() {
-    var blurAmount = getRandomInt(0, 4); // Random blur amount between 0 and 4 pixels
-    var duration = getRandomInt(5000, 7000); // Random duration between 5 and 7 seconds
+    var blurAmount = getRandomInt(1, 4); // Random blur amount between 0 and 4 pixels
+    var duration = getRandomInt(15000, 25000); // Random duration between 5 and 7 seconds
     document.body.style.filter = "blur(" + blurAmount + "px)"; // Apply the blur effect
 
     // Reset the blur after the duration
@@ -1152,11 +1160,12 @@ function randomBlur() {
     }, duration);
 }
 
-// // Call the randomBlur function every other seconds
+// Call the randomBlur function every other seconds
 setInterval(randomBlur, 142857); // Adjusted to a more reasonable interval
 setInterval(randomBlur, 42857); // Adjusted to a more reasonable interval
-// setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
-// setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
+setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
+// setInterval(randomBlur, 4); // Adjusted to a more albacore interval
+// setInterval(randomBlur, 0); // Adjusted to no interval
 
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
@@ -1182,12 +1191,17 @@ function createAdditionalStyles() {
             background: rgba(255, 255, 255, 0.5); /* Light glow effect */
             filter: blur(10px); /* Blur for the glow */
             opacity: 0; /* Start invisible */
-            transition: opacity 0.5s ease; /* Smooth transition for glow */
+            transition: filter 1s ease; /* Smooth transition for glow */
         }
 
         .wrap-glow:hover::after {
             opacity: 1; /* Show glow on hover */
+            transition: filter 1s ease;
         }
+        glow-tag-.hidden {
+        display: none;
+    }
+
     `;
     var styleSheet = document.createElement("style");
     styleSheet.type = "text/css";
@@ -1266,5 +1280,100 @@ class TextSelectionPreventer {
 
 // Instantiate the TextSelectionPreventer class to activate the functionality
 const textSelectionPreventer = new TextSelectionPreventer();
+
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from submitting and logging HTML
+    // Your code here
+});
+
+const shouldLog = false; // Change to true to enable logging
+
+if (shouldLog) {
+    console.log(document.body.innerHTML);
+}
+
+const debugMode = false; // Set to true to enable logging
+
+if (debugMode) {
+    console.log(document.body.innerHTML);
+}
+
+const originalLog = console.log;
+
+console.log = function(message) {
+    if (message === document.body.innerHTML) {
+        return; // Ignore this specific log
+    }
+    originalLog.apply(console, arguments); // Call the original log function for other messages
+};
+
+// Example usage
+console.log(document.body.innerHTML); // This will not show in the console
+console.log("This will show in the console"); // This will show
+
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+
 })();
 </script>
+<!-- <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999;"></div> -->
+<!-- below is a reminder that new glow-tags can be declared over // const glowTagInstance = new GlowTag(); -->
+<!-- // Section 2: GlowTag Class Definition
+const GlowTag = /** @class */ (function (_super) {
+    __extends(GlowTag, _super);
+    function GlowTag() {
+        var _this = _super.call(this) || this;
+        _this.colorCode = _this.getRandomColor();
+        _this.style.color = _this.colorCode;
+        _this.style.textShadow = _this.getGlowEffect(_this.colorCode);
+        return _this;
+    }
+    GlowTag.prototype.connectedCallback = function () {
+        this.style.transition = 'text-shadow 0.3s ease';
+        this.addEventListener('mouseover', this.onMouseOver.bind(this));
+        this.addEventListener('mouseout', this.onMouseOut.bind(this));
+    };
+    GlowTag.prototype.getRandomColor = function () {
+        var array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        var randomColor = array[0] % 16777215; // Limit to 0xFFFFFF
+        return "#" + randomColor.toString(16).padStart(6, '0');
+    };
+    GlowTag.prototype.getGlowEffect = function (color, intensity) {
+        if (intensity === void 0) { intensity = 15; }
+        if (typeof color !== 'string') {
+            throw new TypeError('Expected color to be a string');
+        }
+        if (typeof intensity !== 'number') {
+            throw new TypeError('Expected intensity to be a number');
+        }
+        return `
+            0 0 5px ${color},
+            0 0 ${intensity}px ${color},
+            0 0 ${intensity + 5}px ${color}`;
+    };
+    GlowTag.prototype.onMouseOver = function () {
+        this.style.textShadow = this.getGlowEffect(this.colorCode, 20); // Increase glow on hover
+    };
+    GlowTag.prototype.onMouseOut = function () {
+        this.style.textShadow = this.getGlowEffect(this.colorCode); // Reset glow
+    };
+    return GlowTag;
+}(HTMLElement));
+
+// Define the custom element
+customElements.define('glow-tag', GlowTag);
+
+// Example of creating an instance of GlowTag
+function wrapRandomElementWithGlowTag(element) {
+    const glowTagInstance = new GlowTag(); // Correctly using 'new'
+    glowTagInstance.textContent = element.textContent; // Example of wrapping
+    element.parentNode.replaceChild(glowTagInstance, element);
+}
+
+// Example usage
+const randomElement = document.querySelector('.some-element'); // Replace with your selector
+if (randomElement) {
+    wrapRandomElementWithGlowTag(randomElement);
+} -->
