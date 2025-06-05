@@ -1142,7 +1142,7 @@ function getRandomInt(min, max) {
 
 // Function to randomly blur the screen
 function randomBlur() {
-    var blurAmount = getRandomInt(4, 4); // Random blur amount between 0 and 4 pixels
+    var blurAmount = getRandomInt(1, 4); // Random blur amount between 0 and 4 pixels
     var duration = getRandomInt(15000, 25000); // Random duration between 5 and 7 seconds
     document.body.style.filter = "blur(" + blurAmount + "px)"; // Apply the blur effect
 
@@ -1152,11 +1152,12 @@ function randomBlur() {
     }, duration);
 }
 
-// // Call the randomBlur function every other seconds
+// Call the randomBlur function every other seconds
 setInterval(randomBlur, 142857); // Adjusted to a more reasonable interval
 setInterval(randomBlur, 42857); // Adjusted to a more reasonable interval
 setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
-// setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
+// setInterval(randomBlur, 4); // Adjusted to a more albacore interval
+// setInterval(randomBlur, 0); // Adjusted to no interval
 
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
