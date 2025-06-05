@@ -1161,12 +1161,15 @@ setInterval(randomBlur, 42857); // Adjusted to a more reasonable interval
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
     var styles = `
-body {
-    background: 
-        url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png') no-repeat right, /* Background image positioned to the right */
-        linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
-    background-size: cover; /* Ensures the background image covers the entire area */
-}
+        body {
+            background: 
+                url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png') no-repeat right, /* Background image positioned to the right */
+                linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
+            background-size: cover; /* Ensures the background image covers the entire area */
+            user-select: none; /* For most browsers */
+            -webkit-user-select: none; /* For Safari */
+            -moz-user-select: none; /* For Firefox */
+        }
         .wrap-glow {
             position: relative; /* Positioning for glow effect */
             display: inline-block; /* Inline block for wrapping elements */
@@ -1194,5 +1197,74 @@ body {
 
 // Call the function to create additional styles
 createAdditionalStyles();
+
+class TextSelectionPreventer {
+    #mouseEnabled; // Private field for mouseEnabled
+    #keyboardEnabled; // Private field for keyboardEnabled
+
+    constructor() {
+        this.#mouseEnabled = true; // Always enabled
+        this.#keyboardEnabled = true; // Always enabled
+        this.init();
+    }
+
+    // Method to initialize event listeners
+    init() {
+        document.addEventListener('selectstart', this.#disableTextSelection.bind(this));
+        document.addEventListener('mousedown', this.#disableTextSelection.bind(this));
+        document.body.addEventListener('keydown', this.#preventTextSelection.bind(this));
+        document.body.addEventListener('keydown', this.#preventFindInPage.bind(this)); // Prevent find in page
+    }
+
+    // Method to prevent text selection on selectstart and mousedown events
+    #disableTextSelection(event) {
+        if (this.#mouseEnabled) {
+            event.preventDefault();
+        }
+    }
+
+    // Method to prevent text selection using keyboard
+    #preventTextSelection(event) {
+        if (this.#keyboardEnabled && event.shiftKey && this.#isNavigationKey(event.key)) {
+            event.preventDefault();
+        }
+    }
+
+    // Method to prevent all key presses
+    #preventFindInPage(event) {
+        event.preventDefault(); // Prevent all key presses
+    }
+
+    // Type check for boolean values
+    #isBoolean(value) {
+        return typeof value === 'boolean';
+    }
+
+    // Check if the key is a navigation key
+    #isNavigationKey(key) {
+        return ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(key);
+    }
+
+    // Public method to set mouseEnabled with type check
+    setMouseEnabled(value) {
+        if (this.#isBoolean(value)) {
+            this.#mouseEnabled = value;
+        } else {
+            console.error('Invalid value: mouseEnabled must be a boolean.');
+        }
+    }
+
+    // Public method to set keyboardEnabled with type check
+    setKeyboardEnabled(value) {
+        if (this.#isBoolean(value)) {
+            this.#keyboardEnabled = value;
+        } else {
+            console.error('Invalid value: keyboardEnabled must be a boolean.');
+        }
+    }
+}
+
+// Instantiate the TextSelectionPreventer class to activate the functionality
+const textSelectionPreventer = new TextSelectionPreventer();
 })();
 </script>
