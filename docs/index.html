@@ -1169,45 +1169,82 @@ setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
 
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
-    var styles = `
+    const styles = `
         body {
             background: 
-                url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png') no-repeat right, /* Background image positioned to the right */
-                linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
-            background-size: cover; /* Ensures the background image covers the entire area */
-            user-select: none; /* For most browsers */
-            -webkit-user-select: none; /* For Safari */
-            -moz-user-select: none; /* For Firefox */
+                url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png') no-repeat right,
+                linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
+            background-size: cover;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+
         }
+
         .wrap-glow {
-            position: relative; /* Positioning for glow effect */
-            display: inline-block; /* Inline block for wrapping elements */
+            position: relative;
+            display: inline-block;
+            
         }
 
         .wrap-glow::after {
-            content: ''; /* Empty content for pseudo-element */
-            position: absolute; /* Absolute positioning */
-            top: 0; left: 0; right: 0; bottom: 0; /* Cover the entire element */
-            background: rgba(255, 255, 255, 0.5); /* Light glow effect */
-            filter: blur(10px); /* Blur for the glow */
-            opacity: 0; /* Start invisible */
-            transition: filter 1s ease; /* Smooth transition for glow */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.5);
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 1s ease, filter 1s ease;
+            
         }
 
         .wrap-glow:hover::after {
-            opacity: 1; /* Show glow on hover */
-            transition: filter 1s ease;
+            opacity: 1;
+            animation: pulse 7s infinite;
+            
         }
-        glow-tag-.hidden {
-        display: none;
-    }
 
+        glow-tag-.hidden {
+            display: none;
+        }
+
+        main, h1, h2, h3, p {
+            color: white;
+            font-size: 15px;
+            text-align: center;
+                        animation: pulse 7s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                /*text-shadow: 0 0 5px #ffffff, 
+                             0 0 10px #ffffff, 
+                             0 0 15px #ff00ff, 
+
+                             0 0 25px #ff00ff,*/
+
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.02);
+                /*text-shadow: 0 0 10px #ffffff, 
+
+                             0 0 40px #ff00ff, 
+                             0 0 50px #ff00ff, 
+
+                             0 0 70px #ff00ff;*/
+                opacity: 0.8;
+            }
+        }
     `;
-    var styleSheet = document.createElement("style");
+
+    const styleSheet = document.createElement("style");
     styleSheet.type = "text/css";
     styleSheet.innerText = styles;
     document.head.appendChild(styleSheet);
 }
+
 
 // Call the function to create additional styles
 createAdditionalStyles();
