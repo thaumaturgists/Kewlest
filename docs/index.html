@@ -13,7 +13,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer, set on the server side and this does not mean it is set from here -->
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
     <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
     default-src 'self'; script-src 'self' 'nonce-<RANDOM_NONCE>'; style-src 'self' 'nonce-<RANDOM_NONCE>'; report-uri /csp-violation-report-endpoint;
     Content-Security-Policy: frame-ancestors 'self' https://w.soundcloud.com https://soundcloud.com; // Set on server side
@@ -1156,11 +1156,16 @@ function randomBlur() {
 setInterval(randomBlur, 142857); // Adjusted to a more reasonable interval
 setInterval(randomBlur, 42857); // Adjusted to a more reasonable interval
 // setInterval(randomBlur, 2857); // Adjusted to a more reasonable interval
-// setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
+setInterval(randomBlur, 1.555); // Adjusted to a more reasonable crazy interval
 
 // Function to create and apply additional styles dynamically
 function createAdditionalStyles() {
     var styles = `
+        body {
+        background: 
+        url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png'), /* Background image */
+        linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
+        }
         .wrap-glow {
             position: relative; /* Positioning for glow effect */
             display: inline-block; /* Inline block for wrapping elements */
