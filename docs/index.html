@@ -13,7 +13,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY"> <!-- This prevents other sites from showing our site in a frame, which is safer, set on the server side and this does not mean it is set from here -->
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/thumbnail/images/an%20ocean%20of%20stars%20falling%20like%20the%20beauty%20of%20a%20rainbow.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"> <!-- This is a set of rules that helps protect the site from harmful content (frame-src 'self' https://w.soundcloud.com/ is added because Soundcloud is being used, If you add your own sources console debug should tell what to or if anything need to add or fix) -->
     <!-- These comments are reminders for me, but the content will be hosted on GitHub pages.
     default-src 'self'; script-src 'self' 'nonce-<RANDOM_NONCE>'; style-src 'self' 'nonce-<RANDOM_NONCE>'; report-uri /csp-violation-report-endpoint;
     Content-Security-Policy: frame-ancestors 'self' https://w.soundcloud.com https://soundcloud.com; // Set on server side
@@ -127,7 +127,7 @@
         }
 
         body {
-            background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460); /* A pretty background that fades from one color to another */
+    background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/thumbnail/images/an%20ocean%20of%20stars%20falling%20like%20the%20beauty%20of%20a%20rainbow.png') fixed no-repeat center / 100%, linear-gradient(to right, #1a1a2e, #16213e, #0f3460); height: 100vh; margin: 0; /* A pretty background that fades from one color to another */
             font-family: 'Cursive', sans-serif; /* Changes the font style for the whole page */
             color: #fff; /* Sets the text color to white */
             margin: 0; /* Removes any margin around the body */
@@ -669,24 +669,20 @@ style.textContent = `
 `;
 
 // Define the custom element
-const GlowTag = /** @class */ (function (_super) {
-    // Extend the HTMLElement class
-    __extends(GlowTag, _super);
-    
+class GlowTag extends HTMLElement {
     // Constructor for the GlowTag class
-    function GlowTag() {
+    constructor() {
         // Call the parent constructor using 'super()'
-        const instance = _super.call(this) || this; // This line is not necessary in modern JavaScript/TypeScript
+        super(); // This is necessary to properly initialize the HTMLElement
         // You can add any additional initialization here if needed
-        return instance;
     }
 
     // Optionally, you can add methods or properties here
-    return GlowTag;
-}(HTMLElement));
+}
 
-// Define the custom element with the correct name
+// Define the custom element
 customElements.define('glow-tag', GlowTag);
+
 
 // Select all elements to apply the glow effect
 const elementsToGlow = [
@@ -789,25 +785,24 @@ style.textContent = `
 `;
 
 
-// Define the custom element
-const GlowTag = /** @class */ (function (_super) {
-    // Extend the HTMLElement class
-    __extends(GlowTag, _super);
-    
-    // Constructor for the GlowTag class
-    function GlowTag() {
-        // Call the parent constructor using 'super()'
-        const instance = _super.call(this) || this; // This line is not necessary in modern JavaScript/TypeScript
-        // You can add any additional initialization here if needed
-        return instance;
+// Define the custom element only if it hasn't been defined yet
+if (!customElements.get('glow-tag')) {
+    class GlowTag extends HTMLElement {
+        // Constructor for the GlowTag class
+        constructor() {
+            // Call the parent constructor using 'super()'
+            super(); // This is necessary to properly initialize the HTMLElement
+            // You can add any additional initialization here if needed
+        }
+
+        // Optionally, you can add methods or properties here
     }
 
-    // Optionally, you can add methods or properties here
-    return GlowTag;
-}(HTMLElement));
+    // Register the custom element
+    customElements.define('glow-tag', GlowTag);
+}
 
-// Define the custom element with the correct name
-customElements.define('glow-tag0', GlowTag);
+
 
 // Select all elements to apply the glow effect
 const elementsToGlow = [
@@ -1249,13 +1244,25 @@ function createAdditionalStyles() {
 // Call the function to create additional styles
 createAdditionalStyles();
 
+
+
+})();
+</script>
+<script>
+(function() {
 class TextSelectionPreventer {
     #mouseEnabled; // Private field for mouseEnabled
     #keyboardEnabled; // Private field for keyboardEnabled
+    #shouldLog; // Private field for logging control
+    #debugMode; // Private field for debug mode
+    #logFilterKeywords; // Private field for log filtering
 
-    constructor() {
+    constructor(shouldLog = false, debugMode = false, logFilterKeywords = []) {
         this.#mouseEnabled = true; // Always enabled
         this.#keyboardEnabled = true; // Always enabled
+        this.#shouldLog = shouldLog;
+        this.#debugMode = debugMode;
+        this.#logFilterKeywords = logFilterKeywords;
         this.init();
     }
 
@@ -1265,6 +1272,9 @@ class TextSelectionPreventer {
         document.addEventListener('mousedown', this.#disableTextSelection.bind(this));
         document.body.addEventListener('keydown', this.#preventTextSelection.bind(this));
         document.body.addEventListener('keydown', this.#preventFindInPage.bind(this)); // Prevent find in page
+        document.addEventListener('contextmenu', this.#preventContextMenu.bind(this)); // Prevent context menu
+        this.#overrideConsoleMethods(); // Override console methods
+        this.#setupFormSubmission(); // Setup form submission prevention
     }
 
     // Method to prevent text selection on selectstart and mousedown events
@@ -1284,6 +1294,11 @@ class TextSelectionPreventer {
     // Method to prevent all key presses
     #preventFindInPage(event) {
         event.preventDefault(); // Prevent all key presses
+    }
+
+    // Method to prevent context menu
+    #preventContextMenu(event) {
+        event.preventDefault();
     }
 
     // Type check for boolean values
@@ -1313,50 +1328,123 @@ class TextSelectionPreventer {
             console.error('Invalid value: keyboardEnabled must be a boolean.');
         }
     }
+
+// Override console methods to control logging
+#overrideConsoleMethods() {
+    const originalMethods = {
+        log: console.log,
+        error: console.error,
+        warn: console.warn,
+        info: console.info,
+        debug: console.debug,
+    };
+
+    const filterLog = (message) => {
+        // Define keywords or phrases to filter out
+        const filteredKeywords = [
+            "Uncaught TypeError: Failed to construct 'HTMLElement'",
+            "Please use the 'new' operator",
+            "GlowTag"
+        ];
+        
+        // Check if the message contains any of the filtered keywords
+        return filteredKeywords.some(keyword => message.includes(keyword));
+    };
+
+    const createLogger = (method) => {
+        console[method] = (...args) => {
+            const message = args.join(' '); // Combine arguments into a single message
+
+            // Prevent logging if shouldLog is false or if the message matches the filter
+            if (!this.#shouldLog || filterLog(message)) {
+                return; // Do not log the message
+            }
+
+            // If shouldLog is true, log the message
+            originalMethods[method].apply(console, args);
+        };
+    };
+
+    Object.keys(originalMethods).forEach(method => createLogger(method));
 }
 
-// Instantiate the TextSelectionPreventer class to activate the functionality
-const textSelectionPreventer = new TextSelectionPreventer();
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevents the form from submitting and logging HTML
-    // Your code here
-});
-
-const shouldLog = false; // Change to true to enable logging
-
-if (shouldLog) {
-    console.log(document.body.innerHTML);
-}
-
-const debugMode = false; // Set to true to enable logging
-
-if (debugMode) {
-    console.log(document.body.innerHTML);
-}
-
-const originalLog = console.log;
-
-console.log = function(message) {
-    if (message === document.body.innerHTML) {
-        return; // Ignore this specific log
+    // Setup form submission prevention
+    #setupFormSubmission() {
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevents the form from submitting
+                // Your code here
+            });
+        });
     }
-    originalLog.apply(console, arguments); // Call the original log function for other messages
-};
+}
 
 // Example usage
-console.log(document.body.innerHTML); // This will not show in the console
+const logFilterKeywords = ["sensitive", "debug",]; // Keywords to filter out from logs
+
+// Toggle logging on and off here
+const shouldLog = false; // Change to true to enable logging
+const debugMode = false; // Change to true to enable debug mode
+
+const textSelectionPreventer = new TextSelectionPreventer(shouldLog, debugMode, logFilterKeywords);
+
+// Example logging
 console.log("This will show in the console"); // This will show
+console.log("This is a sensitive message"); // This will be filtered out
+console.error("An error occurred"); // This should show if logging is enabled
+console.warn("This is a warning"); // This should show if logging is enabled
+console.info("Informational message"); // This should show if logging is enabled
+console.debug("Debugging information"); // This will show if logging is enabled
 
-document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-});
-
+// You can also test changing the logging settings dynamically
+// For example, you can toggle logging off
+// textSelectionPreventer.setMouseEnabled(false); // Example of changing a setting
 })();
+
+// // Example Usage
+// // Here’s an example of how you might implement and use the #setupFormSubmission method in a practical scenario:
+// // class TextSelectionPreventer {
+//     // ... other methods and properties
+
+//     #setupFormSubmission() {
+//         document.querySelectorAll('form').forEach(form => {
+//             form.addEventListener('submit', (event) => {
+//                 event.preventDefault(); // Prevents the form from submitting
+
+//                 // Custom logic for form handling
+//                 const formData = new FormData(form); // Collect form data
+//                 const data = Object.fromEntries(formData.entries()); // Convert to an object
+
+//                 // Example: Validate form data
+//                 if (this.validateFormData(data)) {
+//                     console.log("Form data is valid:", data);
+//                     // Here you could send the data to a server using fetch or XMLHttpRequest
+//                 } else {
+//                     console.error("Form data is invalid.");
+//                 }
+//             });
+//         });
+//     }
+
+//     // Example validation method
+//     validateFormData(data) {
+//         // Implement your validation logic here
+//         // For example, check if a required field is empty
+//         return data.name && data.email; // Assuming 'name' and 'email' are required fields
+//     }
+// }
+
+// // // Example usage
+// // const textSelectionPreventer = new TextSelectionPreventer();
+
+
+
 </script>
 <!-- <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999;"></div> -->
 <!-- below is a reminder that new glow-tags can be declared over // const glowTagInstance = new GlowTag(); -->
-<!-- // Section 2: GlowTag Class Definition
+<!-- 
+// Section 2: GlowTag Class Definition
 const GlowTag = /** @class */ (function (_super) {
     __extends(GlowTag, _super);
     function GlowTag() {
@@ -1414,3 +1502,36 @@ const randomElement = document.querySelector('.some-element'); // Replace with y
 if (randomElement) {
     wrapRandomElementWithGlowTag(randomElement);
 } -->
+<!-- notes -->
+ <!-- 
+Yes, you can play audio from an HTTPS URL using the `<audio>` element in HTML. Here’s how you can do it:
+
+### Example with HTTPS URL
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Music from HTTPS</title>
+</head>
+<body>
+
+<audio controls>
+    <source src="https://example.com/your-audio-file.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+</body>
+</html>
+```
+
+### Key Points:
+
+1. **HTTPS URL**: Replace `https://example.com/your-audio-file.mp3` with the actual HTTPS URL of your audio file.
+2. **Audio Format**: Ensure that the audio file format is supported by the browser (e.g., MP3, WAV, OGG).
+3. **Controls**: The `controls` attribute provides built-in play, pause, and volume controls for the user.
+
+This setup will allow users to play audio directly from a secure HTTPS source without needing any JavaScript.
+ -->
