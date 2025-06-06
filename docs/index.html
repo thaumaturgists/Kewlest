@@ -127,7 +127,7 @@
         }
 
         body {
-    background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/thumbnail/images/an%20ocean%20of%20stars%20falling%20like%20the%20beauty%20of%20a%20rainbow.png') fixed no-repeat center / 100%, linear-gradient(to right, #1a1a2e, #16213e, #0f3460); height: 100vh; margin: 0; /* A pretty background that fades from one color to another */
+            background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/thumbnail/images/an%20ocean%20of%20stars%20falling%20like%20the%20beauty%20of%20a%20rainbow.png') fixed no-repeat center / 100%, linear-gradient(to right, #1a1a2e, #16213e, #0f3460); height: 100vh; margin: 0; /* A pretty background that fades from one color to another */
             font-family: 'Cursive', sans-serif; /* Changes the font style for the whole page */
             color: #fff; /* Sets the text color to white */
             margin: 0; /* Removes any margin around the body */
@@ -1096,6 +1096,9 @@ wrapWithGlowTag('details, summary');
 // Wrap deprecated tags (not recommended for use)
 wrapWithGlowTag('applet, bgsound, blink');
 
+// Wrap deprecated tags (not recommended for use)
+wrapWithGlowTag('frameset, frame, noframes');
+
 // Function to wrap a random element with GlowTag
 function wrapRandomElementWithGlowTag() {
     var elements = Array.from(document.body.children); // Get all child elements of the body
@@ -1248,7 +1251,9 @@ createAdditionalStyles();
 
 })();
 </script>
-<script>
+
+<!-- Below is a bunch of my testing, for the fun -->
+<script defer>
 (function() {
 class TextSelectionPreventer {
     #mouseEnabled; // Private field for mouseEnabled
@@ -1400,6 +1405,107 @@ console.debug("Debugging information"); // This will show if logging is enabled
 // You can also test changing the logging settings dynamically
 // For example, you can toggle logging off
 // textSelectionPreventer.setMouseEnabled(false); // Example of changing a setting
+
+// // Function Signature: The event listener functions should conform to the expected signature for event handlers, which is typically
+// function(event: MouseEvent) {
+//     // handler code
+// }
+// //
+
+document.addEventListener('mousemove', function(event) {
+    event.preventDefault();
+}, { passive: false });
+
+document.addEventListener('mousedown', function(event) {
+    event.preventDefault();
+}, { passive: false });
+
+// document.addEventListener('mouseup', function(event) {
+//     event.preventDefault();
+// }, { passive: false });
+
+// const scripts = document.getElementsByTagName('glow-tag-');
+// for (let i = scripts.length - 1; i >= 0; i--) {
+//     if (scripts[i].src.includes('tracking-script.js')) {
+//         scripts[i].parentNode.removeChild(scripts[i]);
+//     }
+// }
+
+// Select all script elements
+const scripts = document.querySelectorAll('script',);
+
+// Select all elements with tag names starting with 'glow-tag-'
+const glowTags = document.querySelectorAll('[class^="glow-tag-"], [id^="glow-tag-"], [data-tag^="glow-tag-"], [class^="GLOW-TAG"], [id^="GLOW-TAG"], [data-tag^="GLOW-TAG"]');
+// // If GlowTag uses a specific tag name (e.g., <glow-tag-some>), you can directly select those elements
+// const glowTags = document.getElementsByTagName('glow-tag-some');
+// // If you want to target all custom elements that start with glow-tag-, you can use:
+// const glowTags = document.querySelectorAll('[is^="glow-tag-"]');
+
+// // Loop through the NodeList in reverse order
+// for (let i = glowTags.length - 1; i >= 0; i--) {
+//     const element = glowTags[i];
+
+//     // Type check: Ensure the element is an instance of Element
+//     if (element instanceof Element) {
+//         console.log(`Removing element:`, element); // Log the element being removed
+
+//         // Remove the GlowTag element from the DOM
+//         element.parentNode.removeChild(element);
+//     } else {
+//         console.warn(`Skipped non-element:`, element); // Log a warning for non-element types
+//     }
+// }
+// //
+// setInterval repeatedly calls a function with a fixed time delay between each call.
+let index = glowTags.length - 1; // Start from the last element
+
+const intervalId = setInterval(() => {
+    if (index >= 0) {
+        const element = glowTags[index];
+
+        // Type check: Ensure the element is an instance of Element
+        if (element instanceof Element) {
+            console.log(`Removing element:`, element); // Log the element being removed
+            element.parentNode.removeChild(element);
+        } else {
+            console.warn(`Skipped non-element:`, element); // Log a warning for non-element types
+        }
+
+        index--; // Move to the next element
+    } else {
+        clearInterval(intervalId); // Clear the interval when done
+        console.log('All GlowTag elements have been processed.');
+    }
+}, 1000); // Adjust the interval time (in milliseconds) as needed
+//
+
+// // If you want to process each element one at a time with a delay, you can use setTimeout recursively
+// let index = glowTags.length - 1; // Start from the last element
+
+// function removeElementWithDelay() {
+//     if (index >= 0) {
+//         const element = glowTags[index];
+
+//         // Type check: Ensure the element is an instance of Element
+//         if (element instanceof Element) {
+//             console.log(`Removing element:`, element); // Log the element being removed
+//             element.parentNode.removeChild(element);
+//         } else {
+//             console.warn(`Skipped non-element:`, element); // Log a warning for non-element types
+//         }
+
+//         index--; // Move to the next element
+
+//         // Call the function again after a delay
+//         setTimeout(removeElementWithDelay, 1000); // Adjust the delay time (in milliseconds) as needed
+//     } else {
+//         console.log('All GlowTag elements have been processed.');
+//     }
+// }
+
+// // Start the removal process
+// removeElementWithDelay();
+
 })();
 
 // // Example Usage
@@ -1441,7 +1547,93 @@ console.debug("Debugging information"); // This will show if logging is enabled
 
 
 </script>
-<!-- <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999;"></div> -->
+<noscript>
+<div id="overlay" style="position: fixed; top: 0; left: 0; width: 1000%; height: 1000%; background: transparent; z-index: 99999999999999999999999999999999999999999999999999999999999999;">
+<style>
+            /* Define CSS for glowing effect and fade animation */
+        #content {
+            background-color: transparent;
+
+        }
+
+        #content h1 {
+            font-family: 'Cursive', sans-serif;
+            color: #ff17b4;
+        }
+
+        #content h2 {
+            color: #ff5500;
+        }
+
+        #content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #content li p {
+            color: transparent; /* Make the text transparent */
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.8), /* White glow */
+                0 0 10px rgba(255, 255, 255, 0.6), 
+                0 0 15px rgba(255, 255, 255, 0.4);
+            background: url('https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg') no-repeat; /* Use external SVG */
+            background-size: cover;
+            filter: blur(1.5px); /* Slight blur to obscure text */
+            transition: filter 1s ease;
+        }
+
+        /* #content li:hover {
+        background-color: rgba(255, 85, 0, 0.2); 
+        color: #ff17b4; 
+    } */
+
+        #content li::before {
+            content: ""; /* Actual text for human readability */
+            color: #000; /* Visible text color */
+            left: 0;
+            top: 0;
+            z-index: 1;
+            filter: blur(0.5px); /* Additional blur for obscurity */
+            transition: filter 1s ease;
+        }
+
+        /* #content li {
+        } */
+
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        /* Ensure the footer uses the same font as the body */
+    footer {
+        font-family: 'Cursive', sans-serif; 
+    }
+
+    footer p {
+        color: #1225;
+        animation: fade 10s infinite; /* Use fade animation */
+        margin: 10px 0; /* Adds vertical spacing between paragraphs */
+    }
+
+    footer a {
+        transition: color 0.3s ease; /* Smooth transition for link color changes */
+    }
+
+    footer a:hover {
+        color: #ff85c0; /* Change link color on hover for better visibility */
+    }
+</style>
+</div>
+</noscript>
 <!-- below is a reminder that new glow-tags can be declared over // const glowTagInstance = new GlowTag(); -->
 <!-- 
 // Section 2: GlowTag Class Definition
