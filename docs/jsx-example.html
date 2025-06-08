@@ -14,7 +14,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
 
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/MusicMixer/AlbumArt/AAP.png https://raw.githubusercontent.com/thaumaturgists/Kewlest/main/feather.png https://raw.githubusercontent.com/thaumaturgists/SDCM/refs/heads/main/images/svg/wavr%C3%AD.svg; font-src 'self'; connect-src 'self' https://jsonplaceholder.typicode.com; media-src 'self'; frame-src 'self' https://w.soundcloud.com/; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;">
 
     <!-- SEO Optimization -->
     <meta name="description" content="Music Mixer - A simple yet powerful music randomizer. Play indie hits or trending tunes with ease.">
@@ -27,6 +27,7 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <!-- If you still want to run TypeScript directly in the browser using a script tag, you can use Babel with the TypeScript prese -->
 
     <style>
         body {
@@ -41,7 +42,7 @@
             overflow: hidden; /* Prevent scrolling on small screens */
         }
 
-        #continer {
+        #container {
             display: flex;
             flex-direction: column;
             justify-content: flex-start; /* Align items to the start */
@@ -56,23 +57,6 @@
             box-sizing: border-box; /* Include padding in width calculations */
             max-height: 90vh; /* Limit the height of the container */
             overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        button {
-            background-color: #ff5722; /* Vibrant orange */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            font-size: 16px;
-            padding: 10px 15px;
-            width: 15%; /* Full width for buttons */
-        }
-
-        button:hover {
-            background-color: #e64a19; /* Darker orange on hover */
-            transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
         iframe {
@@ -137,53 +121,210 @@
             font-size: 25px;
         }
 
+        .article {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .title {
+            color: #333;
+            font-size: 1.5em; /* Increased font size for better visibility */
+            margin-bottom: 10px; /* Added margin for spacing */
+        }
+
+        .description {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #555; /* Slightly lighter color for better contrast */
+        }
+
+        #library-output {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Preserve whitespace */
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
+
+        .code-output {
+            background-color: #282c34; /* Dark background for contrast */
+            color: #abb2bf; /* Light gray text color */
+            padding: 15px; /* Padding around the text */
+            border-radius: 5px; /* Rounded corners */
+            overflow-x: auto; /* Allow horizontal scrolling for long lines */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            line-height: 1.5; /* Increase line height for better readability */
+            border: 1px solid #444; /* Subtle border for definition */
+            margin-bottom: 20px; /* Added margin for spacing */
+            font-size: small;
+        }
+
     </style>
 </head>
 <body>
-    <div id="continer">
-<div class="description">
-    <h2>Music Mixer Application Overview</h2>
-    <p>The Music Mixer application is a dynamic web application built using React. It allows users to play random music from various playlists. Below is a detailed breakdown of the key components of the application:</p>
-    
-    <h3>HTML Structure</h3>
-    <p>The HTML file serves as the foundation for the Music Mixer application. Key elements include:</p>
-    <ul>
-        <li><strong>Document Type:</strong> The file begins with a <code>&lt;!DOCTYPE html&gt;</code> declaration, indicating it is an HTML5 document.</li>
-        <li><strong>Head Section:</strong>
-            <ul>
-                <li><strong>Favicon:</strong> A feather icon that represents the application in browser tabs.</li>
-                <li><strong>Meta Tags:</strong> Essential tags for character set, viewport settings for mobile responsiveness, and security headers.</li>
-                <li><strong>SEO Optimization:</strong> Meta tags for description, keywords, and author to enhance search engine visibility.</li>
-                <li><strong>Title:</strong> The page title is set to "Music Mixer - A Fun Way to Discover Music."</li>
-                <li><strong>Scripts:</strong> Includes React, ReactDOM, and Babel for JSX support, enabling the use of modern JavaScript features.</li>
-            </ul>
-        </li>
-        <li><strong>Styles:</strong> The <code>&lt;style&gt;</code> section contains CSS rules that define the visual appearance of the application, including button styles and layout adjustments.</li>
-        <li><strong>Body Section:</strong> Contains a <code>&lt;div&gt;</code> with the ID <code>root</code>, which serves as the mounting point for the React application. The <code>musicMixer.jsx</code> file is loaded here to render the main component.</li>
-    </ul>
-    
-    <h3 id="jfb">JSX File Breakdown</h3>
-    <p>The <code>musicMixer.jsx</code> file is the heart of the Music Mixer application, defining the main functionality and user interface. Key components include:</p>
-    <ul>
-        <li><strong>Music Playlist:</strong> An array of music playlists, each with a source URL and a descriptive title, allowing users to explore different genres.</li>
-        <li><strong>State Management:</strong> Utilizes React's <code>useState</code> hook to manage the currently playing music and the minimized state of the mixer interface.</li>
-        <li><strong>Core Functions:</strong>
-            <ul>
-                <li><code>playRandomMusic:</code> Randomly selects a music playlist and updates the player to start from a random track, enhancing the user experience.</li>
-                <li><code>toggleMinimize:</code> Toggles the visibility of the music mixer, allowing users to minimize or expand the interface as needed.</li>
-            </ul>
-        </li>
-        <li><strong>Inline Styles:</strong> Styles are defined directly within the component for various elements, ensuring a cohesive look and feel throughout the application.</li>
-        <li><strong>Render Method:</strong> Returns a structured JSX layout that includes interactive buttons for playing music and toggling the minimized state, an iframe for the music player, and a stylish footer with copyright information.</li>
-    </ul>
+<div id="container">
+    <div class="description">
+        <h2>Music Mixer Application Overview</h2>
+        <p>The Music Mixer application is a dynamic web application built using React. It allows users to play random music from various playlists. Below is a detailed breakdown of the key components of the application:</p>
+        
+        <h3>HTML Structure</h3>
+        <p>The HTML file serves as the foundation for the Music Mixer application. Key elements include:</p>
+        <ul>
+            <li><strong>Document Type:</strong> The file begins with a <code>&lt;!DOCTYPE html&gt;</code> declaration, indicating it is an HTML5 document.</li>
+            <li><strong>Head Section:</strong>
+                <ul>
+                    <li><strong>Favicon:</strong> A feather icon that represents the application in browser tabs.</li>
+                    <li><strong>Meta Tags:</strong> Essential tags for character set, viewport settings for mobile responsiveness, and security headers.</li>
+                    <li><strong>SEO Optimization:</strong> Meta tags for description, keywords, and author to enhance search engine visibility.</li>
+                    <li><strong>Title:</strong> The page title is set to "Music Mixer - A Fun Way to Discover Music."</li>
+                    <li><strong>Scripts:</strong> Includes React, ReactDOM, and Babel for JSX support, enabling the use of modern JavaScript features.</li>
+                </ul>
+            </li>
+            <li><strong>Styles:</strong> The <code>&lt;style&gt;</code> section contains CSS rules that define the visual appearance of the application, including button styles and layout adjustments.</li>
+            <li><strong>Body Section:</strong> Contains a <code>&lt;div&gt;</code> with the ID <code>root</code>, which serves as the mounting point for the React application. The <code>musicMixer.jsx</code> file is loaded here to render the main component.</li>
+        </ul>
+        
+        <h3 id="jfb">JSX File Breakdown</h3>
+        <div id="root"></div>
+        <!-- Load Your JSX Component -->
+            <!-- musicMixer has an import from MusicFooter -->
+        <script type="text/babel" src="./musicMixer.jsx"></script> 
+        <script type="text/babel"  src="./MusicFooter.jsx"></script>
+        <p>The <code>musicMixer.jsx</code> file is the heart of the Music Mixer application, defining the main functionality and user interface. Key components include:</p>
+        <ul>
+            <li><strong>Music Playlist:</strong> An array of music playlists, each with a source URL and a descriptive title, allowing users to explore different genres.</li>
+            <li><strong>State Management:</strong> Utilizes React's <code>useState</code> hook to manage the currently playing music and the minimized state of the mixer interface.</li>
+            <li><strong>Core Functions:</strong>
+                <ul>
+                    <li><code>playRandomMusic:</code> Randomly selects a music playlist and updates the player to start from a random track, enhancing the user experience.</li>
+                    <li><code>toggleMinimize:</code> Toggles the visibility of the music mixer, allowing users to minimize or expand the interface as needed.</li>
+                </ul>
+            </li>
+            <li><strong>Inline Styles:</strong> Styles are defined directly within the component for various elements, ensuring a cohesive look and feel throughout the application.</li>
+            <li><strong>Render Method:</strong> Returns a structured JSX layout that includes interactive buttons for playing music and toggling the minimized state, an iframe for the music player, and a stylish footer with copyright information.</li>
+        </ul>
 
-    <h3>Conclusion</h3>
-    <p>The Music Mixer application showcases the power of React in creating interactive web applications. With its user-friendly interface and engaging features, it provides a fun way for users to discover and enjoy music.</p>
+        <h3>Conclusion</h3>
+        <p>The Music Mixer application showcases the power of React in creating interactive web applications. With its user-friendly interface and engaging features, it provides a fun way for users to discover and enjoy music.</p>
+    </div>
+
+    <h3>Below is just some simple, useful information</h3>
+
+    <article class="article">
+        <h1 class="title">Library System Showcase</h1>
+        <p class="description">This application demonstrates a simple library system with classes for books and members. It showcases how members can borrow books, with special handling for premium members.</p>
+        <pre id="library-output"></pre>
+        
+        <h2>Code Example</h2>
+        <pre class="code-output">
+// Define a class for Book
+class Book {
+    constructor(title, author, year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+
+    getDetails() {
+        return \`\${this.title} by \${this.author}, published in \${this.year}\`;
+    }
+}
+
+// Define a class for Member
+class Member {
+    constructor(name, memberId) {
+        this.name = name;
+        this.memberId = memberId;
+    }
+
+    borrowBook(book) {
+        return \`\${this.name} has borrowed "\${book.title}"\`;
+    }
+}
+
+// Define a class for PremiumMember that extends Member
+class PremiumMember extends Member {
+    borrowBook(book) {
+        return \`\${this.name} (Premium Member) has borrowed "\${book.title}" with priority.\`;
+    }
+}
+
+// Create instances of Book and Member
+const book1 = new Book("book 1", "first last", 1234); // first and last is name of Author
+const book2 = new Book("book 2", "first last", 2345);
+
+const member1 = new Member("Member1", 1);
+const premiumMember1 = new PremiumMember("Member2", 2);
+
+// Display the details and borrowing actions
+const libraryOutput = \`
+    Book Details:
+    - \${book1.getDetails()}
+    - \${book2.getDetails()}
+
+    Borrowing Actions:
+    - \${member1.borrowBook(book1)}
+    - \${premiumMember1.borrowBook(book2)}
+\`;
+
+document.getElementById('library-output').innerText = libraryOutput;
+        </pre>
+        <script>
+            // Define a class for Book
+            class Book {
+                constructor(title, author, year) {
+                    this.title = title;
+                    this.author = author;
+                    this.year = year;
+                }
+
+                getDetails() {
+                    return `${this.title} by ${this.author}, published in ${this.year}`;
+                }
+            }
+
+            // Define a class for Member
+            class Member {
+                constructor(name, memberId) {
+                    this.name = name;
+                    this.memberId = memberId;
+                }
+
+                borrowBook(book) {
+                    return `${this.name} has borrowed "${book.title}"`;
+                }
+            }
+
+            // Define a class for PremiumMember that extends Member
+            class PremiumMember extends Member {
+                borrowBook(book) {
+                    return `${this.name} (Premium Member) has borrowed "${book.title}" with priority.`;
+                }
+            }
+
+            // Create instances of Book and Member
+            const book1 = new Book("book 1", "first last", 1234);
+            const book2 = new Book("book 2", "first last", 2345);
+
+            const member1 = new Member("Member1", 1);
+            const premiumMember1 = new PremiumMember("Member2", 2);
+
+            // Display the details and borrowing actions
+            const libraryOutput = `
+                Book Details:
+                - ${book1.getDetails()}
+                - ${book2.getDetails()}
+
+                Borrowing Actions:
+                - ${member1.borrowBook(book1)}
+                - ${premiumMember1.borrowBook(book2)}
+            `;
+
+            document.getElementById('library-output').innerText = libraryOutput;
+        </script>
+    </article>
 </div>
-
-
-    <div id="root"></div>
-    <!-- Load Your JSX Component -->
-    <script type="text/babel" src="./musicMixer.jsx"></script>
 </body>
 </html>

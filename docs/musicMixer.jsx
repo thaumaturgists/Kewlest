@@ -223,7 +223,7 @@ const MusicMixer = () => { // This defines the main music mixer component.
                     ></iframe>
                 )}
             </div>
-            <h6 id="music-footer" style={styles.musicFooter}>&#x00A9; Kewlest</h6> {/*// This adds a footer with a copyright notice.*/}
+            <h6 id="music-footer" style={styles.musicFooter}><MusicFooter /></h6> {/*// This adds a footer with a copyright notice. I made, and added an import for music footer <3*/}
         </div>
     );
 };
