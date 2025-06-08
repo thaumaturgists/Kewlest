@@ -43,7 +43,7 @@ To get started with Kewlest, clone the repository and install the necessary depe
 ```bash
 git clone https://github.com/thaumaturgists/Kewlest.git
 cd Kewlest
-npm install
+// npm install <!-- Please, only if you know what you are doing. -->
 ```
 ### Getting React Started Simply
 
