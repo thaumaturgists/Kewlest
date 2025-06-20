@@ -1,4 +1,6 @@
 # [Kewlest](https://thaumaturgists.github.io/Kewlest/)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 <img src="feather.png" alt="Kewlest Logo" width="200"/>
 
