@@ -1,0 +1,188 @@
+# TODO
+
+- **Search Across All Files**:
+  - Press `Ctrl + Shift + F` (or `Cmd + Shift + F` on macOS) to open the global search.
+  - Enter `TODO` in the search box. This will show all occurrences of TODO comments in your entire workspace.
+
+```markdown
+# TODO Checklist
+
+  - [ ] src\MM-testJS\musicMixer-test2.js
+
+    - [ ] // TODO: Where I left off, Next button picking a track from a list given by the iframe that was picked. Works, but just needs to reconize the list
+
+    - [ ] // TODO: styles need to be adjusted back to a previous where the toggle does not stop the music
+```
+
+
+
+# TODO Comments in VSCode
+
+## Overview
+
+This document provides a brief guide on how to use TODO comments in your code files while working in Visual Studio Code (VSCode). TODO comments are useful for marking tasks or reminders within your code that need to be addressed later.
+
+## How to Add TODO Comments
+
+1. **Open Your File**: Launch VSCode and open the file where you want to add a TODO comment.
+
+2. **Insert a TODO Comment**: 
+   - In your code, type `// TODO:` followed by your task description. 
+   - For example:
+     ```javascript
+     // TODO: Refactor this function to improve performance
+     ```
+
+3. **Save Your Changes**: Make sure to save the file after adding your TODO comment.
+
+## Viewing TODO Comments
+
+1. **Open the Command Palette**: Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) to open the Command Palette.
+
+2. **Search for TODO**: Type `TODO` in the Command Palette and select `TODO: Show All TODOs`. This will display a list of all TODO comments in your workspace.
+
+3. **Navigate to TODOs**: Click on any TODO item in the list to jump directly to the line in the file where the TODO comment is located.
+
+## Tips
+
+- **Use Descriptive Text**: Make your TODO comments as descriptive as possible to provide context for future reference.
+- **Prioritize Tasks**: Consider adding priority levels or deadlines in your TODO comments for better task management.
+- **Regularly Review TODOs**: Make it a habit to review your TODO comments regularly to ensure tasks are completed in a timely manner.
+
+## Conclusion
+
+Using TODO comments in VSCode is a simple yet effective way to keep track of tasks and reminders within your code. By following the steps outlined in this guide, you can enhance your productivity and maintain a clear overview of your development tasks.
+
+# How to have my VScode recognize TODO to find them in the code of my files
+
+To ensure that Visual Studio Code (VSCode) recognizes TODO comments in your code and allows you to find them easily, follow these steps:
+
+### 1. Use the Correct Format for TODO Comments
+
+Make sure your TODO comments are formatted correctly. The standard format is:
+```
+// TODO: Your task description here
+```
+or for multiline comments:
+```javascript
+/* TODO: Your task description here */
+```
+
+### 2. Enable Built-in TODO Detection
+
+VSCode has built-in support for recognizing TODO comments, but it may not display them in a dedicated list without the right setup. Here’s how to ensure it works:
+
+- **Check Your Settings**: 
+  - Open the settings by going to `File` > `Preferences` > `Settings` (or `Code` > `Preferences` > `Settings` on macOS).
+  - Search for "TODO" in the settings search bar.
+  - Ensure that any relevant settings related to TODO comments are enabled.
+
+### 3. Use the Search Functionality
+
+You can use the search functionality to find TODO comments across your workspace:
+
+- **Search in Current File**:
+  - Open the file where you want to find TODO comments.
+  - Press `Ctrl + F` (or `Cmd + F` on macOS) to open the search bar.
+  - Type `TODO` in the search bar to highlight all instances in the current file.
+
+- **Search Across All Files**:
+  - Press `Ctrl + Shift + F` (or `Cmd + Shift + F` on macOS) to open the global search.
+  - Enter `TODO` in the search box. This will show all occurrences of TODO comments in your entire workspace.
+
+### 4. Install Extensions for Enhanced TODO Management
+
+Consider installing extensions that enhance TODO comment functionality:
+
+- **TODO Highlight**: This extension highlights TODO comments in your code, making them easier to spot.
+- **Todo Tree**: This extension creates a tree view of all TODO comments in your workspace, allowing for easy navigation.
+
+To install an extension:
+
+1. Open the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl + Shift + X` (or `Cmd + Shift + X` on macOS).
+2. Search for the desired extension (e.g., "TODO Highlight" or "Todo Tree").
+3. Click "Install" to add the extension to your VSCode.
+
+### 5. Reload VSCode
+
+After making changes to settings or installing extensions, it’s a good idea to reload VSCode to ensure everything is functioning correctly. You can do this by pressing `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) and typing "Reload Window."
+
+### Conclusion
+
+By following these steps, you should be able to have VSCode recognize TODO comments in your code effectively. Using the built-in search functionality and considering helpful extensions can significantly enhance your ability to manage and navigate TODOs in your projects.
+
+# Markdown Check List
+
+In Markdown, you can create checklists (also known as task lists) using a simple syntax. Here’s how to create a checklist in Markdown:
+
+### Basic Syntax for Checklists
+
+To create a checklist, use the following format:
+
+- Start each item with a hyphen (`-`) or an asterisk (`*`).
+- Follow it with a space and then `[ ]` for an unchecked item or `[x]` for a checked item.
+
+### Example of a Markdown Checklist
+
+```markdown
+# My Checklist
+
+- [ ] Task 1: Write documentation
+- [ ] Task 2: Implement feature X
+- [x] Task 3: Fix bug Y
+- [ ] Task 4: Review pull requests
+```
+
+### Rendering the Checklist
+
+When rendered (for example, on GitHub or in a Markdown viewer), the checklist will look like this:
+
+# My Checklist
+
+- [ ] Task 1: Write documentation
+- [ ] Task 2: Implement feature X
+- [x] Task 3: Fix bug Y
+- [ ] Task 4: Review pull requests
+
+### Notes
+
+- **Interactivity**: On platforms that support Markdown checklists (like GitHub), you can click the checkboxes to mark tasks as complete or incomplete.
+- **Nested Checklists**: You can also create nested checklists by indenting items with spaces or tabs:
+  
+  ```markdown
+  - [ ] Main Task
+    - [ ] Subtask 1
+    - [ ] Subtask 2
+  ```
+
+### Example of a Nested Checklist
+
+```markdown
+# Project Checklist
+
+- [ ] Project Setup
+  - [ ] Initialize repository
+  - [ ] Set up development environment
+- [ ] Development
+  - [ ] Implement feature A
+  - [ ] Write tests
+- [ ] Deployment
+  - [ ] Prepare release notes
+  - [ ] Deploy to production
+```
+
+When rendered, it will look like this:
+
+# Project Checklist
+
+- [ ] Project Setup
+  - [ ] Initialize repository
+  - [ ] Set up development environment
+- [ ] Development
+  - [ ] Implement feature A
+  - [ ] Write tests
+- [ ] Deployment
+  - [ ] Prepare release notes
+  - [ ] Deploy to production
+
+This is how you can create and use checklists in Markdown!

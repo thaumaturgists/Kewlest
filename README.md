@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-<img src="feather.png" alt="Kewlest Logo" width="200"/>
+<img src="./public/images/TTMI1024x1024-2.png" alt="Kewlest Logo" width="200"/>
 
 Kewlest is a music player designed to facilitate the spontaneous enjoyment of music from around the world. Currently, it integrates with SoundCloud APIs through iframes, allowing users to explore a diverse range of music. The project aims to empower users to create their own music websites using a variety of technologies, including JavaScript, React, and TypeScript.
 
